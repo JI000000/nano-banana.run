@@ -37,14 +37,14 @@ const OptimizedTutorialCard: React.FC<TutorialCardProps> = ({
 
   return (
     <div className="bg-white rounded-lg shadow-sm overflow-hidden transition-shadow duration-300 hover:shadow-md">
-      {/* 图片容器 */}
+      {/* 图片容器：固定高度，图片填充，防止标题被覆盖 */}
       <div className="relative h-48">
         <LazyImage
           src={imagePath}
           alt={title}
           width={500}
           height={300}
-          className="w-full h-full object-cover"
+          className="w-full h-full"
         />
       </div>
       
