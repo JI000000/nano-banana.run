@@ -27,7 +27,7 @@ const Layout: React.FC<LayoutProps> = ({
   ogType,
   ogImage = '/images/og-default.jpg',
   structuredData,
-  showWebVitals = false
+  showWebVitals = process.env.NODE_ENV === 'development' ? false : false
 }) => {
   const router = useRouter();
   

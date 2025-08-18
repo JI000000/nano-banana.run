@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FiAlertCircle, FiCheckCircle, FiInfo } from 'react-icons/fi';
+import { FiAlertCircle, FiCheckCircle, FiInfo, FiX } from 'react-icons/fi';
 
 interface WebVitalsMetric {
   id: string;
@@ -28,6 +28,7 @@ const WebVitalsDisplay: React.FC<WebVitalsDisplayProps> = ({
 }) => {
   const [metrics, setMetrics] = useState<WebVitalsMetric[]>([]);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
     // 检查是否为管理员
@@ -81,8 +82,8 @@ const WebVitalsDisplay: React.FC<WebVitalsDisplayProps> = ({
     }
   }, [showDetails, isAdmin]);
   
-  // 如果没有启用详情显示且不是管理员，不显示组件
-  if (!showDetails && !isAdmin) {
+  // 如果没有启用详情显示且不是管理员，或用户关闭了显示，不显示组件
+  if ((!showDetails && !isAdmin) || !isVisible) {
     return null;
   }
   
@@ -126,7 +127,16 @@ const WebVitalsDisplay: React.FC<WebVitalsDisplayProps> = ({
 
   return (
     <div className={`${className} p-4 rounded-lg bg-white shadow-sm border border-gray-200`}>
-      <h3 className="text-lg font-medium text-gray-900 mb-3">Core Web Vitals</h3>
+      <div className="flex justify-between items-center mb-3">
+        <h3 className="text-lg font-medium text-gray-900">Core Web Vitals</h3>
+        <button 
+          onClick={() => setIsVisible(false)}
+          className="text-gray-400 hover:text-gray-600"
+          aria-label="Close Web Vitals panel"
+        >
+          <FiX className="w-5 h-5" />
+        </button>
+      </div>
       
       <div className="space-y-2">
         {metrics.map((metric) => {

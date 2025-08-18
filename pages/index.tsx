@@ -50,12 +50,12 @@ export default function Home() {
   const combinedStructuredData = [websiteSchema, productSchema];
 
   return (
-    <Layout
-      title="Nano-Banana.Run - The AI Image Editing Resource Center"
-      description="Discover how to harness the power of Nano-Banana, the revolutionary AI image model that outperforms competitors with precise text replacement and seamless scene transformations."
-      keywords="nano-banana, AI image editing, text replacement AI, scene transformation, style matching, multi-region editing, batch processing"
-      structuredData={combinedStructuredData}
-      showWebVitals={true}
+          <Layout
+        title="Nano-Banana.Run - The AI Image Editing Resource Center"
+        description="Discover how to harness the power of Nano-Banana, the revolutionary AI image model that outperforms competitors with precise text replacement and seamless scene transformations."
+        keywords="nano-banana, AI image editing, text replacement AI, scene transformation, style matching, multi-region editing, batch processing"
+        structuredData={combinedStructuredData}
+        showWebVitals={false}
     >
       {/* Hero Section */}
       <Hero 
