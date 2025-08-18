@@ -5,24 +5,59 @@
 @layer base {
   body {
     @apply bg-white text-gray-900;
+    /* 提高内容可见性算法性能 */
+    content-visibility: auto;
   }
   h1 {
     @apply text-4xl font-bold mb-6;
+    /* 确保LCP元素有合适的高度 */
+    contain-intrinsic-size: 0 50px;
   }
   h2 {
     @apply text-3xl font-bold mb-4;
+    contain-intrinsic-size: 0 40px;
   }
   h3 {
     @apply text-2xl font-bold mb-3;
+    contain-intrinsic-size: 0 30px;
   }
   h4 {
     @apply text-xl font-bold mb-2;
+    contain-intrinsic-size: 0 25px;
   }
   p {
     @apply mb-4;
+    contain-intrinsic-size: 0 50px;
   }
   a {
     @apply text-primary-600 hover:text-primary-800;
+  }
+  
+  /* 对于网络较慢的用户减少动画效果 */
+  @media (prefers-reduced-motion: reduce),
+  (update: slow) {
+    *, ::before, ::after {
+      animation-delay: -1ms !important;
+      animation-duration: 1ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0s !important;
+    }
+  }
+  
+  /* 针对慢速连接优化 */
+  html.slow-connection {
+    img:not([loading="eager"]) {
+      @apply opacity-0 transition-opacity duration-300;
+    }
+    
+    img.loaded {
+      @apply opacity-100;
+    }
+    
+    /* 降级质量的背景图像 */
+    .bg-image-container {
+      background-image: var(--low-quality-bg);
+    }
   }
 }
 

@@ -27,9 +27,10 @@ const Header: React.FC = () => {
           </div>
           
           {/* Desktop Navigation */}
-          <nav className="hidden md:ml-6 md:flex md:space-x-8">
+          <nav className="hidden md:ml-6 md:flex md:space-x-6">
             <Link href="/" className="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-gray-500 hover:border-primary-600 hover:text-primary-700">Home</Link>
-            <Link href="/about" className="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-gray-500 hover:border-primary-600 hover:text-primary-700">About</Link>
+            <Link href="/try-generator" className="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-gray-500 hover:border-primary-600 hover:text-primary-700">Try Generator</Link>
+            <Link href="/batch-processing" className="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-gray-500 hover:border-primary-600 hover:text-primary-700">Batch Processing</Link>
             <Link href="/tutorials" className="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-gray-500 hover:border-primary-600 hover:text-primary-700">Tutorials</Link>
             <Link href="/examples" className="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-gray-500 hover:border-primary-600 hover:text-primary-700">Examples</Link>
             <Link href="/comparison" className="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-gray-500 hover:border-primary-600 hover:text-primary-700">Comparison</Link>
@@ -67,6 +68,8 @@ const Header: React.FC = () => {
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1">
             <Link href="/" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-primary-50 hover:text-primary-700">Home</Link>
+            <Link href="/try-generator" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-primary-50 hover:text-primary-700">Try Generator</Link>
+            <Link href="/batch-processing" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-primary-50 hover:text-primary-700">Batch Processing</Link>
             <Link href="/about" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-primary-50 hover:text-primary-700">About</Link>
             <Link href="/tutorials" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-primary-50 hover:text-primary-700">Tutorials</Link>
             <Link href="/examples" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-primary-50 hover:text-primary-700">Examples</Link>

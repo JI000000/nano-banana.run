@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Layout from '../components/Layout';
 import Link from 'next/link';
 import { FiChevronDown, FiChevronUp } from 'react-icons/fi';
+import { generateFAQSchema } from '../lib/seo/StructuredDataGenerator';
 
 // FAQ item interface
 interface FAQItem {
@@ -125,11 +126,39 @@ const FAQ: React.FC = () => {
     }));
   };
 
+  // 提取纯文本答案用于结构化数据
+  const extractTextContent = (reactNode: React.ReactNode): string => {
+    if (typeof reactNode === 'string') {
+      return reactNode;
+    } else if (React.isValidElement(reactNode)) {
+      // 处理HTML元素
+      if (reactNode.props.children) {
+        return extractTextContent(reactNode.props.children);
+      }
+      return '';
+    } else if (Array.isArray(reactNode)) {
+      // 处理数组
+      return reactNode.map(extractTextContent).join(' ');
+    }
+    return '';
+  };
+  
+  // 生成FAQ结构化数据
+  const faqStructuredData = generateFAQSchema({
+    questions: initialFAQs.map(faq => ({
+      question: faq.question,
+      answer: extractTextContent(faq.answer)
+    }))
+  });
+
   return (
     <Layout
       title="Nano-Banana AI FAQ | Frequently Asked Questions"
       description="Find answers to frequently asked questions about the Nano-Banana AI image model, including how to use it, its capabilities, limitations, and more."
       keywords="nano-banana FAQ, nano-banana questions, nano-banana AI help, nano-banana image model FAQ"
+      structuredData={faqStructuredData}
+      ogType="website"
+      ogImage="/images/faq-sharing-image.jpg"
     >
       {/* Hero */}
       <section className="bg-gray-50 py-12 md:py-20">
@@ -196,28 +225,6 @@ const FAQ: React.FC = () => {
           </div>
         </div>
       </section>
-      
-      {/* Schema.org FAQPage structured data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'FAQPage',
-            'mainEntity': initialFAQs.map((faq) => ({
-              '@type': 'Question',
-              'name': faq.question,
-              'acceptedAnswer': {
-                '@type': 'Answer',
-                // Convert React node to string for the schema
-                'text': typeof faq.answer === 'string' 
-                  ? faq.answer 
-                  : 'For detailed answer, please visit our FAQ page.'
-              }
-            }))
-          })
-        }}
-      />
     </Layout>
   );
 };

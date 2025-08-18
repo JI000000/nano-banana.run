@@ -3,6 +3,8 @@ import Layout from '../components/Layout';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FiCheck, FiMinus, FiInfo } from 'react-icons/fi';
+import OptimizedComparisonCard from '../components/OptimizedComparisonCard';
+import LazyImage from '../components/LazyImage';
 
 // Feature comparison interface
 interface FeatureComparison {
@@ -396,9 +398,13 @@ export default function Comparison() {
               </div>
               
               <div className="relative h-80 w-full">
-                <div className="absolute inset-0 bg-gray-800 text-center flex items-center justify-center text-white">
-                  [Placeholder for text replacement comparison]
-                </div>
+                <LazyImage
+                  src="/images/comparison/text-replacement-comparison.jpg"
+                  alt="Text replacement comparison between Nano-Banana and competitors"
+                  width={600}
+                  height={320}
+                  className="w-full h-full object-cover"
+                />
               </div>
               
               <div className="p-6 bg-gray-50">
@@ -418,9 +424,13 @@ export default function Comparison() {
               </div>
               
               <div className="relative h-80 w-full">
-                <div className="absolute inset-0 bg-gray-800 text-center flex items-center justify-center text-white">
-                  [Placeholder for scene transformation comparison]
-                </div>
+                <LazyImage
+                  src="/images/comparison/scene-transformation-comparison.jpg"
+                  alt="Scene transformation comparison between Nano-Banana and competitors"
+                  width={600}
+                  height={320}
+                  className="w-full h-full object-cover"
+                />
               </div>
               
               <div className="p-6 bg-gray-50">

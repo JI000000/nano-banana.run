@@ -1,47 +1,18 @@
-# 图片资源目录
+# Image Assets for Nano-Banana.Run
 
-本目录存放网站所需的图片资源。在实际部署前，需要将占位图片替换为实际的高质量图像。
+This directory contains all image assets used in the Nano-Banana.Run website.
 
-## 目录结构
+## Image Credits
 
-```
-images/
-├── examples/       # 案例展示页面使用的图片
-│   ├── text-replacement-before.jpg   # 文本替换前图片
-│   ├── text-replacement-after.jpg    # 文本替换后图片
-│   ├── scene-transformation-before.jpg  # 场景转换前图片
-│   └── ...
-├── tutorials/      # 教程页面使用的图片
-│   ├── tutorial-getting-started.jpg  # 入门教程配图
-│   ├── tutorial-text-replacement.jpg # 文本替换教程配图
-│   └── ...
-└── logo.png        # 网站Logo
-```
+All images are sourced from Unsplash and are free for commercial use under the [Unsplash License](https://unsplash.com/license).
 
-## 图片规范
+## Directory Structure
 
-1. **格式**: 优先使用WebP格式，同时提供JPEG/PNG作为后备
-2. **尺寸**:
-   - 教程缩略图: 800x450px (16:9)
-   - 案例图片: 1200x800px
-   - Logo: 256x256px
-3. **文件大小**: 控制在200KB以内，确保加载性能
-4. **命名规则**: 使用小写字母和连字符，描述性命名
+- `/images` - General images used across the site
+- `/images/comparison` - Images used for feature comparison pages
+- `/images/examples` - Example outputs from the Nano-Banana AI model
+- `/images/tutorials` - Images used in tutorial content
 
-## 添加新图片
+## Icons
 
-添加新图片时，请遵循以下步骤:
-
-1. 选择合适的子目录
-2. 遵循命名约定
-3. 优化图片大小
-4. 更新对应组件中的引用
-
-## 占位图片替换
-
-上线前请确保所有占位图片都已替换为实际图片。以下是重要的占位图片:
-
-1. Logo
-2. 所有教程缩略图
-3. 所有案例对比图片
-4. 首页特色图片
+Icons for PWA and site branding are stored in the `/icons` directory.
