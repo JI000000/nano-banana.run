@@ -8,6 +8,7 @@ import ImageProcessor from '../components/ImageProcessor';
 import RegionSelector from '../components/RegionSelector';
 import SmartParamsSuggester from '../components/SmartParamsSuggester';
 import { RegionDefinition } from '../lib/api/ApiService';
+import { GAEvents, trackEvent } from '../lib/analytics/ga';
 
 // Tabs for different editing modes
 type EditingMode = 'text' | 'scene' | 'style' | 'multi-region';
@@ -33,6 +34,7 @@ const TryGenerator: React.FC = () => {
     if (files && files[0]) {
       const selectedFile = files[0];
       setFile(selectedFile);
+      trackEvent(GAEvents.upload_image, { source: 'file_input', size: selectedFile.size, type: selectedFile.type });
       
       // Create preview URL
       const url = URL.createObjectURL(selectedFile);
@@ -48,6 +50,7 @@ const TryGenerator: React.FC = () => {
     if (files && files[0]) {
       const droppedFile = files[0];
       setFile(droppedFile);
+      trackEvent(GAEvents.upload_image, { source: 'drag_drop', size: droppedFile.size, type: droppedFile.type });
       
       // Create preview URL
       const url = URL.createObjectURL(droppedFile);
@@ -80,35 +83,37 @@ const TryGenerator: React.FC = () => {
     setPrompt('');
     setResultImage(null);
     setRegions([]);
+    trackEvent('reset_editor');
   };
   
   // Example prompts for each mode
   const examplePrompts: Record<EditingMode, string[]> = {
     text: [
-      "Change 'Coming Soon' to 'Now Open'",
-      "Replace all text with Japanese translation",
-      "Change the phone number to 555-123-4567"
+      "Replace sign text: 'Coming Soon' -> 'Now Open'",
+      "Translate all visible text into Japanese (match fonts)",
+      "Update phone number to 555-123-4567 (keep layout)"
     ],
     scene: [
-      "Transform the beach to a snowy mountain",
-      "Change daytime scene to sunset",
-      "Move the scene from office to forest"
+      "Place subject in a snowy mountain at golden hour",
+      "Convert daytime to sunset with warm lighting",
+      "Move the scene from office to a forest trail"
     ],
     style: [
-      "Apply oil painting style",
-      "Convert to watercolor artwork",
-      "Make it look like an anime scene"
+      "Apply oil painting style with visible brush strokes",
+      "Convert to watercolor while keeping outlines",
+      "Anime style with soft shading and clean lines"
     ],
     "multi-region": [
-      "Edit multiple regions of the image",
-      "Apply different styles to different parts",
-      "Replace text while changing background"
+      "Replace poster text (Region A) and change wall color (Region B)",
+      "Blur license plate (Region A) and enhance sky (Region B)",
+      "Remove object (Region A) and add logo (Region B)"
     ]
   };
 
   // Use an example prompt
   const useExamplePrompt = (examplePrompt: string) => {
     setPrompt(examplePrompt);
+    trackEvent(GAEvents.use_example_prompt, { mode, examplePrompt });
   };
   
   // Clean up on unmount
@@ -197,7 +202,7 @@ const TryGenerator: React.FC = () => {
                   className={`flex-1 py-3 px-3 flex justify-center items-center text-sm font-medium ${
                     mode === 'text' ? 'bg-primary-100 text-primary-800 border-primary-300' : 'bg-white text-gray-700'
                   } rounded-l-md`}
-                  onClick={() => setMode('text')}
+                  onClick={() => { setMode('text'); trackEvent(GAEvents.select_mode, { mode: 'text' }); }}
                 >
                   <FiType className="mr-1" /> Text Replacement
                 </button>
@@ -205,7 +210,7 @@ const TryGenerator: React.FC = () => {
                   className={`flex-1 py-3 px-3 flex justify-center items-center text-sm font-medium ${
                     mode === 'scene' ? 'bg-primary-100 text-primary-800 border-primary-300' : 'bg-white text-gray-700'
                   } border-l border-r border-gray-200`}
-                  onClick={() => setMode('scene')}
+                  onClick={() => { setMode('scene'); trackEvent(GAEvents.select_mode, { mode: 'scene' }); }}
                 >
                   <FiRefreshCw className="mr-1" /> Scene Transform
                 </button>
@@ -213,7 +218,7 @@ const TryGenerator: React.FC = () => {
                   className={`flex-1 py-3 px-3 flex justify-center items-center text-sm font-medium ${
                     mode === 'style' ? 'bg-primary-100 text-primary-800 border-primary-300' : 'bg-white text-gray-700'
                   } border-r border-gray-200`}
-                  onClick={() => setMode('style')}
+                  onClick={() => { setMode('style'); trackEvent(GAEvents.select_mode, { mode: 'style' }); }}
                 >
                   <FiImage className="mr-1" /> Style Transfer
                 </button>
@@ -221,7 +226,7 @@ const TryGenerator: React.FC = () => {
                   className={`flex-1 py-3 px-3 flex justify-center items-center text-sm font-medium ${
                     mode === 'multi-region' ? 'bg-primary-100 text-primary-800 border-primary-300' : 'bg-white text-gray-700'
                   } rounded-r-md`}
-                  onClick={() => setMode('multi-region')}
+                  onClick={() => { setMode('multi-region'); trackEvent(GAEvents.select_mode, { mode: 'multi-region' }); }}
                 >
                   <FiLayers className="mr-1" /> Multi-Region
                 </button>
@@ -249,7 +254,7 @@ const TryGenerator: React.FC = () => {
                   </div>
                 </div>
                 <label className="relative inline-flex items-center cursor-pointer">
-                  <input type="checkbox" checked={isSmartWorkflow} onChange={(e) => setIsSmartWorkflow(e.target.checked)} className="sr-only peer" />
+                  <input type="checkbox" checked={isSmartWorkflow} onChange={(e) => { setIsSmartWorkflow(e.target.checked); trackEvent(GAEvents.toggle_smart_workflow, { enabled: e.target.checked }); }} className="sr-only peer" />
                   <div className="w-11 h-6 bg-gray-300 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-primary-300 rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-600"></div>
                 </label>
               </div>
@@ -338,8 +343,8 @@ const TryGenerator: React.FC = () => {
                   sceneDescription={mode === 'scene' ? prompt : undefined}
                   regions={mode === 'multi-region' ? regions : undefined}
                   options={{ smartWorkflow: isSmartWorkflow }}
-                  onProcessingComplete={handleProcessingComplete}
-                  onError={handleProcessingError}
+                  onProcessingComplete={(url) => { handleProcessingComplete(url); trackEvent(GAEvents.generate_complete, { mode }); }}
+                  onError={(err) => { handleProcessingError(err); trackEvent(GAEvents.generate_error, { mode, message: err.message }); }}
                   smartWorkflow={isSmartWorkflow}
                   suggestedParams={suggestedParams}
                 />
@@ -348,13 +353,13 @@ const TryGenerator: React.FC = () => {
               {/* Result display */}
               {resultImage && status !== 'loading' && (
                 <div className="flex flex-wrap gap-3 mt-4">
-                  <button className="px-4 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700">
+                  <button className="px-4 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700" onClick={() => trackEvent(GAEvents.download_result)}>
                     Download Result
                   </button>
-                  <button className="px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50">
+                  <button className="px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50" onClick={() => { setResultImage(null); trackEvent('edit_again'); }}>
                     Edit Again
                   </button>
-                  <button className="px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50">
+                  <button className="px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50" onClick={() => trackEvent(GAEvents.share_result)}>
                     Share
                   </button>
                 </div>

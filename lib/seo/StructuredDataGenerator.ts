@@ -378,3 +378,51 @@ export function generateOrganizationSchema(options: {
 export function combineStructuredData(...schemas: Record<string, any>[]): Record<string, any>[] {
   return schemas.filter(Boolean);
 }
+
+/**
+ * 生成SoftwareApplication类型的结构化数据（与Product并列，显式使用）
+ */
+export function generateSoftwareApplicationSchema(options: {
+  name: string;
+  url: string;
+  description: string;
+  applicationCategory?: string;
+  operatingSystem?: string;
+  image?: string;
+  offers?: { price: string; priceCurrency: string };
+}): Record<string, any> {
+  const { name, url, description, applicationCategory = 'DesignApplication', operatingSystem = 'Web browser', image, offers } = options;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    'name': name,
+    'url': url,
+    'description': description,
+    'applicationCategory': applicationCategory,
+    'operatingSystem': operatingSystem,
+    ...(image && { 'image': image }),
+    ...(offers && { 'offers': { '@type': 'Offer', 'price': offers.price, 'priceCurrency': offers.priceCurrency } })
+  };
+}
+
+/**
+ * 生成CreativeWorkSeries类型的结构化数据（用于教程系列/专栏）
+ */
+export function generateCreativeWorkSeriesSchema(options: {
+  name: string;
+  url: string;
+  description: string;
+  about?: string[];
+  image?: string;
+}): Record<string, any> {
+  const { name, url, description, about = [], image } = options;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWorkSeries',
+    'name': name,
+    'url': url,
+    'description': description,
+    ...(about.length > 0 && { 'about': about.map(a => ({ '@type': 'Thing', 'name': a })) }),
+    ...(image && { 'image': image })
+  };
+}

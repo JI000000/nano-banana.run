@@ -155,7 +155,7 @@ const FAQ: React.FC = () => {
     <Layout
       title="Nano-Banana AI FAQ | Frequently Asked Questions"
       description="Find answers to frequently asked questions about the Nano-Banana AI image model, including how to use it, its capabilities, limitations, and more."
-      keywords="nano-banana FAQ, nano-banana questions, nano-banana AI help, nano-banana image model FAQ"
+      keywords="nano banana faq, gemini 2.5 flash image faq, is nano banana free, nano banana price, nano banana google, gemini flash image nano banana, access nano banana, ai studio nano banana"
       structuredData={faqStructuredData}
       ogType="website"
       ogImage="/images/faq-sharing-image.jpg"
@@ -176,6 +176,17 @@ const FAQ: React.FC = () => {
       <section className="section">
         <div className="container">
           <div className="max-w-3xl mx-auto">
+            {/* Trending Questions block */}
+            <div className="mb-10 rounded-lg border border-gray-200 bg-white p-6">
+              <h2 className="text-2xl font-semibold text-gray-900 mb-4">Trending Questions</h2>
+              <ul className="list-disc ml-6 space-y-2 text-gray-700">
+                <li>Is Nano Banana from Google? (aka Gemini 2.5 Flash Image)</li>
+                <li>Is Nano Banana free? How is pricing handled?</li>
+                <li>How can I access Nano Banana / AI Studio?</li>
+                <li>What makes it different from Flux Kontext, Midjourney, and DALL·E?</li>
+                <li>Does it add visible/invisible watermarks?</li>
+              </ul>
+            </div>
             <div className="space-y-6">
               {faqs.map((faq, index) => (
                 <div 

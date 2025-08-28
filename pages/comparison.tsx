@@ -89,7 +89,7 @@ export default function Comparison() {
     {
       category: 'Text Replacement Accuracy',
       description: 'Ability to replace text while preserving surrounding elements',
-      nanoBananaScore: 9.5,
+      nanoBananaScore: 9.6,
       fluxKontextScore: 7.2,
       dallEScore: 6.8,
       midjourneyScore: 4.5,
@@ -97,7 +97,7 @@ export default function Comparison() {
     {
       category: 'Scene Transformation Quality',
       description: 'Coherence and realism when changing environments',
-      nanoBananaScore: 9.2,
+      nanoBananaScore: 9.4,
       fluxKontextScore: 8.5,
       dallEScore: 8.8,
       midjourneyScore: 9.0,
@@ -105,7 +105,7 @@ export default function Comparison() {
     {
       category: 'Style Consistency',
       description: 'Maintaining consistent artistic style across edits',
-      nanoBananaScore: 9.7,
+      nanoBananaScore: 9.6,
       fluxKontextScore: 8.0,
       dallEScore: 7.5,
       midjourneyScore: 9.3,
@@ -113,7 +113,7 @@ export default function Comparison() {
     {
       category: 'Processing Speed',
       description: 'Time to generate results',
-      nanoBananaScore: 8.8,
+      nanoBananaScore: 9.5,
       fluxKontextScore: 8.5,
       dallEScore: 7.0,
       midjourneyScore: 6.5,
@@ -121,7 +121,7 @@ export default function Comparison() {
     {
       category: 'Detail Preservation',
       description: 'Maintaining fine details from the original image',
-      nanoBananaScore: 9.6,
+      nanoBananaScore: 9.5,
       fluxKontextScore: 7.8,
       dallEScore: 8.2,
       midjourneyScore: 8.0,

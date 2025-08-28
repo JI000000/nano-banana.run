@@ -24,7 +24,7 @@ const SEO: React.FC<SEOProps> = ({
   keywords,
   canonical,
   ogType = 'website',
-  ogImage = '/images/og-image.jpg',
+  ogImage = '/images/og-default.jpg',
   twitterCard = 'summary_large_image',
   twitterCreator = '@nanobananai',
   structuredData,

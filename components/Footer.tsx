@@ -42,6 +42,9 @@ const Footer: React.FC = () => {
                 <Link href="/comparison" className="text-gray-600 hover:text-primary-600 text-sm">Comparison</Link>
               </li>
               <li>
+                <Link href="/news/nano-banana-2025-08-26" className="text-gray-600 hover:text-primary-600 text-sm">News</Link>
+              </li>
+              <li>
                 <Link href="/faq" className="text-gray-600 hover:text-primary-600 text-sm">FAQ</Link>
               </li>
             </ul>

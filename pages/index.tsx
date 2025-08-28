@@ -51,9 +51,9 @@ export default function Home() {
 
   return (
           <Layout
-        title="Nano-Banana.Run - The AI Image Editing Resource Center"
-        description="Discover how to harness the power of Nano-Banana, the revolutionary AI image model that outperforms competitors with precise text replacement and seamless scene transformations."
-        keywords="nano-banana, AI image editing, text replacement AI, scene transformation, style matching, multi-region editing, batch processing"
+        title="Nano Banana (Gemini 2.5 Flash Image) Resource Center"
+        description="Learn Nano Banana a.k.a. Gemini 2.5 Flash Image: consistent character editing, multi-image blending, natural language edits, and pro workflows. Tutorials, examples, and unbiased comparisons."
+        keywords="nano banana, nano-banana, gemini 2.5 flash image, gemini flash image, google nano banana, ai image editing, character consistency, multi-image blend, image-to-image editing, background replacement, style transfer, price, free, ai studio, scene transformation, text replacement, multi-region editing, batch processing"
         structuredData={combinedStructuredData}
         showWebVitals={false}
     >
@@ -202,6 +202,9 @@ export default function Home() {
             <Link href="/comparison" className="btn btn-primary inline-block">
               See Full Comparison
             </Link>
+            <div className="mt-4 text-sm">
+              <Link href="/news/nano-banana-2025-08-26" className="text-primary-600 hover:text-primary-800">Latest update: Aug 26, 2025 →</Link>
+            </div>
           </div>
         </div>
       </section>

@@ -28,6 +28,11 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     '/comparison',
     '/faq',
     '/contact',
+    '/nano-banana-gemini-2-5-flash-image',
+    '/try-generator',
+    '/batch-processing',
+    '/search',
+    '/news/nano-banana-2025-08-26',
   ];
   
   // Generate sitemap XML
