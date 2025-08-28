@@ -205,7 +205,7 @@ export default function GettingStartedTutorial() {
               <h2 className="text-2xl font-bold text-gray-900 mb-4">Creating Your First Edit</h2>
               
               <p className="text-lg text-gray-700 mb-6">
-                Let's walk through a simple text replacement exercise, which is one of Nano-Banana's strongest capabilities:
+                Let's walk through a simple text replacement exercise, one of Nano‑Banana's strongest capabilities. You can also <Link href="/try-generator?mode=text" className="text-primary-600 hover:text-primary-800">open the editor preset</Link> and follow the same steps.
               </p>
               
               <div className="bg-white border border-gray-200 rounded-lg p-6 mb-6">
@@ -411,11 +411,32 @@ export default function GettingStartedTutorial() {
               }
             },
             'datePublished': '2025-08-15',
-            'dateModified': '2025-08-15',
+            'dateModified': '2025-08-26',
             'image': 'https://nano-banana.run/images/tutorial-getting-started.jpg',
             'articleBody': 'Learn the basics of Nano-Banana AI model, how to access it, and start creating your first edits with simple prompts.',
             'articleSection': 'Tutorial',
             'skill_level': 'Beginner'
+          })
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'HowTo',
+            'name': 'Getting Started with Nano-Banana (Gemini 2.5 Flash Image)',
+            'description': 'Upload an image, write a precise prompt, enable Smart Workflow, and generate a consistent edit.',
+            'totalTime': 'PT10M',
+            'tool': ['Nano‑Banana Editor'],
+            'supply': ['One source image'],
+            'step': [
+              { '@type': 'HowToStep', 'position': 1, 'name': 'Open the editor', 'text': 'Go to the Try Generator page and prepare your image.' },
+              { '@type': 'HowToStep', 'position': 2, 'name': 'Upload your image', 'text': 'Use drag‑and‑drop or file picker to upload a clear, high‑resolution image.' },
+              { '@type': 'HowToStep', 'position': 3, 'name': 'Write a prompt', 'text': 'Describe exactly what to change and what to preserve. Quote exact strings for text replacement.' },
+              { '@type': 'HowToStep', 'position': 4, 'name': 'Enable Smart Workflow', 'text': 'Keep Smart Workflow on to auto‑tune parameters.' },
+              { '@type': 'HowToStep', 'position': 5, 'name': 'Generate and verify', 'text': 'Click Generate and verify consistency, layout and details. Re‑prompt if needed.' }
+            ]
           })
         }}
       />
