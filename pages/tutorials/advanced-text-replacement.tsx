@@ -90,7 +90,11 @@ const Step: React.FC<{
 
 const AdvancedTextReplacementTutorial: React.FC = () => {
   return (
-    <Layout>
+    <Layout
+      title="Text Replacement with Nano-Banana (Gemini 2.5 Flash Image)"
+      description="Precise text replacement with Nano-Banana (aka Gemini 2.5 Flash Image): fonts, backgrounds, multi-layer effects, and Smart Workflow."
+      keywords="text replacement, nano banana, gemini 2.5 flash image, keep layout, preserve QR code, artistic fonts, multi-layer, smart workflow"
+    >
       <div className="bg-gradient-to-br from-primary-900 to-primary-700 text-white py-12 md:py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
@@ -131,6 +135,14 @@ const AdvancedTextReplacementTutorial: React.FC = () => {
               our new algorithms can handle the task with unprecedented precision. Let's dive in!
             </p>
           </div>
+
+          {/* Quick Prompts */}
+          <TutorialSection title="Copy‑ready Prompts (paste into the editor)" icon={<FiEdit className="text-primary-600" />}> 
+            <CodeBlock>{`Replace "COMING SOON" with "NOW OPEN" while preserving all layout, logos, QR codes and shadows. Keep exact font size and baseline.`}</CodeBlock>
+            <CodeBlock>{`Translate all visible text to Japanese. Keep the same typography, spacing and background intact. Output should match the original style.`}</CodeBlock>
+            <CodeBlock>{`Update phone number from "(555) 123‑4567" to "(415) 555‑0199" and preserve every other element exactly.`}</CodeBlock>
+            <p className="mt-3"><Link href="/try-generator?mode=text" className="text-primary-600 hover:text-primary-800">Open preset in the editor →</Link></p>
+          </TutorialSection>
           
           {/* What's New Section */}
           <TutorialSection
@@ -525,7 +537,7 @@ Preserve exact depth and lighting angles.`}
         </div>
       </div>
       
-      {/* Schema.org article structured data */}
+      {/* Schema.org structured data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -536,7 +548,7 @@ Preserve exact depth and lighting angles.`}
             'description': 'Learn how to use Nano-Banana\'s enhanced text replacement capabilities to handle complex fonts, challenging backgrounds, and multi-layer text with pixel-perfect accuracy.',
             'image': 'https://nano-banana.run/images/tutorials/text-replacement-comparison.jpg',
             'datePublished': '2025-08-14',
-            'dateModified': '2025-08-14',
+            'dateModified': '2025-08-26',
             'author': {
               '@type': 'Organization',
               'name': 'Nano-Banana Team'
@@ -552,6 +564,26 @@ Preserve exact depth and lighting angles.`}
             'articleSection': 'Tutorial',
             'articleBody': 'This tutorial covers advanced text replacement techniques using Nano-Banana\'s enhanced AI capabilities, including handling artistic fonts, complex backgrounds, and multi-layer text effects.',
             'keywords': 'text replacement AI, Nano-Banana tutorial, AI image editing, artistic font replacement, complex background preservation, multi-layer text editing'
+          })
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'HowTo',
+            'name': 'Precise Text Replacement',
+            'description': 'Replace text while preserving layout, logos and background using Nano‑Banana (Gemini 2.5 Flash Image).',
+            'totalTime': 'PT12M',
+            'tool': ['Nano‑Banana Editor'],
+            'supply': ['Source image'],
+            'step': [
+              { '@type': 'HowToStep', 'position': 1, 'name': 'Upload image', 'text': 'Provide a high‑resolution image with clear text.' },
+              { '@type': 'HowToStep', 'position': 2, 'name': 'Write prompt', 'text': 'Quote exact strings and add preservation instructions (layout, QR, logos).' },
+              { '@type': 'HowToStep', 'position': 3, 'name': 'Enable Smart Workflow', 'text': 'Let the system tune parameters for fonts and backgrounds.' },
+              { '@type': 'HowToStep', 'position': 4, 'name': 'Generate', 'text': 'Produce the edit and review against the original for pixel‑level consistency.' }
+            ]
           })
         }}
       />

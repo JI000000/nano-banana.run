@@ -141,7 +141,11 @@ const BeforeAfterComparison: React.FC<{
 
 const SceneTransformationTutorial: React.FC = () => {
   return (
-    <Layout>
+    <Layout
+      title="Scene Transformation with Nano-Banana (Gemini 2.5 Flash Image)"
+      description="3D‑aware scene transformation using Nano‑Banana (aka Gemini 2.5 Flash Image): preserve subjects, lighting and geometry across environments."
+      keywords="scene transformation, nano banana, gemini 2.5 flash image, 3d aware, preserve lighting, subject consistency, multi image blend"
+    >
       <div className="bg-gradient-to-br from-primary-900 to-primary-700 text-white py-12 md:py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
@@ -169,6 +173,13 @@ const SceneTransformationTutorial: React.FC = () => {
       
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-3xl mx-auto">
+          {/* Quick Prompts */}
+          <TutorialSection title="Copy‑ready Prompts" icon={<FiRefreshCw className="text-primary-600" />}>
+            <CodeBlock>{`Move subjects from an office to a snowy mountain at golden hour while preserving identical pose, clothing details and facial identity. Keep lighting from top‑right and cast long soft shadows on snow.`}</CodeBlock>
+            <CodeBlock>{`Blend person from Image A and pet from Image B into a basketball court scene. Keep both identities consistent and match floor reflections and perspective.`}</CodeBlock>
+            <p className="mt-3"><Link href="/try-generator?mode=scene" className="text-primary-600 hover:text-primary-800">Open preset in the editor →</Link></p>
+          </TutorialSection>
+
           {/* Introduction */}
           <div className="prose prose-lg max-w-none mb-12">
             <p>
@@ -703,7 +714,7 @@ in the distance. Ensure all people have appropriate rain reactions in posture.`}
         </div>
       </div>
       
-      {/* Schema.org article structured data */}
+      {/* Schema.org structured data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -714,7 +725,7 @@ in the distance. Ensure all people have appropriate rain reactions in posture.`}
             'description': 'Learn how to use Nano-Banana\'s enhanced scene transformation capabilities with improved 3D awareness, geometric consistency, and advanced lighting preservation.',
             'image': 'https://nano-banana.run/images/tutorials/scene-transform-new.jpg',
             'datePublished': '2025-08-12',
-            'dateModified': '2025-08-12',
+            'dateModified': '2025-08-26',
             'author': {
               '@type': 'Organization',
               'name': 'Nano-Banana Team'
@@ -730,6 +741,26 @@ in the distance. Ensure all people have appropriate rain reactions in posture.`}
             'articleSection': 'Tutorial',
             'articleBody': 'This tutorial covers advanced scene transformation techniques using Nano-Banana\'s enhanced AI capabilities, including 3D scene representation, environment transformation, lighting preservation, and weather physics.',
             'keywords': 'scene transformation AI, 3D-aware AI, Nano-Banana tutorial, AI image editing, lighting preservation, weather effects AI'
+          })
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'HowTo',
+            'name': '3D‑Aware Scene Transformation',
+            'description': 'Change environments while preserving subjects and lighting with Nano‑Banana (Gemini 2.5 Flash Image).',
+            'totalTime': 'PT20M',
+            'tool': ['Nano‑Banana Editor'],
+            'supply': ['Source image(s)'],
+            'step': [
+              { '@type': 'HowToStep', 'position': 1, 'name': 'Upload image(s)', 'text': 'Provide the base photo and optional reference images.' },
+              { '@type': 'HowToStep', 'position': 2, 'name': 'Write a detailed prompt', 'text': 'Specify target environment, lighting direction and what to preserve.' },
+              { '@type': 'HowToStep', 'position': 3, 'name': 'Enable Subject Anchoring', 'text': 'Lock identity and pose for consistent results.' },
+              { '@type': 'HowToStep', 'position': 4, 'name': 'Generate and verify', 'text': 'Check scale, perspective and shadows. Iterate if needed.' }
+            ]
           })
         }}
       />
