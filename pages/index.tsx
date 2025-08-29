@@ -9,25 +9,26 @@ import TutorialCard from '../components/TutorialCard';
 import OptimizedComparisonCard from '../components/OptimizedComparisonCard';
 import OptimizedTutorialCard from '../components/OptimizedTutorialCard';
 import LazyImage from '../components/LazyImage';
-import { FiEdit, FiRefreshCcw, FiThumbsUp, FiZap, FiBriefcase, FiLayers } from 'react-icons/fi';
+import ImageProcessor from '../components/ImageProcessor';
+import { FiEdit, FiRefreshCcw, FiThumbsUp, FiZap, FiBriefcase, FiLayers, FiStar, FiUsers, FiClock, FiCheckCircle } from 'react-icons/fi';
 import { generateWebSiteSchema, generateProductSchema } from '../lib/seo/StructuredDataGenerator';
 
 export default function Home() {
   // 生成网站结构化数据
   const websiteSchema = generateWebSiteSchema({
     url: 'https://nano-banana.run/',
-    name: 'Nano-Banana.Run - The Definitive Resource for Nano-Banana AI Image Editing',
-    description: 'Learn how to use the Nano-Banana AI image model with tutorials, examples and comparisons.',
+    name: 'Nano Banana - AI Image Editor & Generator',
+    description: 'Transform any image with simple text prompts. Nano-banana\'s advanced model delivers consistent character editing and scene preservation that surpasses Flux Kontext.',
     searchUrl: 'https://nano-banana.run/search?q={search_term_string}'
   });
   
   // 生成产品结构化数据
   const productSchema = generateProductSchema({
     url: 'https://nano-banana.run/',
-    name: 'Nano-Banana AI Image Editing Model',
+    name: 'Nano Banana AI Image Editor',
     description: 'Revolutionary AI image model that outperforms competitors with precise text replacement and seamless scene transformations.',
     imageUrl: 'https://nano-banana.run/images/nano-banana-model-preview.jpg',
-    brand: 'Nano-Banana',
+    brand: 'Nano Banana',
     review: [
       {
         reviewRating: 5,
@@ -41,7 +42,7 @@ export default function Home() {
       }
     ],
     aggregateRating: {
-      ratingValue: 4.8,
+      ratingValue: 4.9,
       reviewCount: 124
     }
   });
@@ -50,228 +51,223 @@ export default function Home() {
   const combinedStructuredData = [websiteSchema, productSchema];
 
   return (
-          <Layout
-        title="Nano Banana (Gemini 2.5 Flash Image) Resource Center"
-        description="Learn Nano Banana a.k.a. Gemini 2.5 Flash Image: consistent character editing, multi-image blending, natural language edits, and pro workflows. Tutorials, examples, and unbiased comparisons."
-        keywords="nano banana, nano-banana, gemini 2.5 flash image, gemini flash image, google nano banana, ai image editing, character consistency, multi-image blend, image-to-image editing, background replacement, style transfer, price, free, ai studio, scene transformation, text replacement, multi-region editing, batch processing"
-        structuredData={combinedStructuredData}
-        showWebVitals={false}
+    <Layout
+      title="Nano Banana - AI Image Editor & Generator"
+      description="Transform any image with simple text prompts. Nano-banana's advanced model delivers consistent character editing and scene preservation that surpasses Flux Kontext."
+      keywords="nano banana, ai image editor, ai image generator, text to image, image to image, character consistency, scene transformation, flux kontext alternative, ai photo editing"
+      structuredData={combinedStructuredData}
+      showWebVitals={false}
     >
       {/* Hero Section */}
       <Hero 
-        title="The Definitive Resource for Nano-Banana AI Image Editing"
-        description="Discover how to harness the power of Nano-Banana, the revolutionary AI image model that outperforms competitors with precise text replacement and seamless scene transformations. Now with enhanced accuracy and performance!"
-        primaryBtnText="Try It Now"
+        title="Transform any image with simple text prompts"
+        description="Nano-banana's advanced model delivers consistent character editing and scene preservation that surpasses Flux Kontext. Experience the future of AI image editing."
+        primaryBtnText="Try The AI Editor"
         primaryBtnLink="/try-generator"
         secondaryBtnText="View Examples"
         secondaryBtnLink="/examples"
       />
       
-      {/* Features Section */}
-      <section className="section">
+      {/* Try It Now Section */}
+      <section className="section py-16 bg-gradient-to-br from-gray-50 to-white">
         <div className="container">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900">Powerful Features</h2>
-            <p className="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">
-              Nano-Banana delivers industry-leading capabilities that redefine AI image editing
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Experience AI Image Generation
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Try our advanced AI model with real-time generation. Upload an image or start from scratch with text prompts.
+            </p>
+          </div>
+          <ImageProcessor />
+        </div>
+      </section>
+      
+      {/* Core Features Section */}
+      <section className="section py-20 bg-gray-50">
+        <div className="container">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Core Features</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Why Choose Nano Banana?
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <FeatureCard 
-              icon={<FiEdit className="h-8 w-8" />}
-              title="Enhanced Text Replacement"
-              description="Replace text in images with 98% accuracy while preserving surrounding elements. New artistic font recognition improves complex text handling by 35%."
-            />
-            <FeatureCard 
-              icon={<FiRefreshCcw className="h-8 w-8" />}
-              title="Advanced Scene Transformation"
-              description="Transform scenes with improved 3D awareness and lighting preservation. Our enhanced geometric consistency keeps subjects perfectly integrated with new backgrounds."
-            />
-            <FeatureCard 
-              icon={<FiThumbsUp className="h-8 w-8" />}
-              title="Style-Matched Editing"
-              description="Add new elements with precisely matched artistic style, brush strokes, and texture, ensuring a cohesive and professional finished result."
-            />
-          </div>
-          
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
-            <FeatureCard 
-              icon={<FiZap className="h-8 w-8" />}
-              title="WebGL Accelerated"
-              description="Experience 40% faster processing with our new WebGL acceleration. Large images are processed in chunks with real-time progress tracking."
-            />
-            <FeatureCard 
-              icon={<FiBriefcase className="h-8 w-8" />}
-              title="One-Click Workflows"
-              description="Our new smart workflows reduce editing steps by 25%. The system automatically detects optimal parameters for your specific image."
-            />
-            <FeatureCard 
-              icon={<FiLayers className="h-8 w-8" />}
-              title="Multi-Region Editing"
-              description="Edit multiple areas of an image simultaneously with consistent results. Perfect for complex editing tasks requiring different operations."
-            />
-          </div>
-          
-          {/* New Batch Processing Feature */}
-          <div className="mt-16 bg-gradient-to-r from-primary-800 to-primary-900 rounded-2xl overflow-hidden shadow-xl">
-            <div className="grid grid-cols-1 md:grid-cols-2">
-              <div className="p-8 md:p-12 flex flex-col justify-center">
-                <div className="inline-block bg-primary-700 rounded-full px-3 py-1 text-sm font-semibold text-primary-50 mb-4">
-                  NEW FEATURE
-                </div>
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">Batch Processing</h3>
-                <p className="text-primary-100 mb-6">
-                  Process multiple images simultaneously with the same settings. Save time on repetitive tasks and ensure consistent results across your entire project.
-                </p>
-                <ul className="text-primary-50 space-y-2 mb-6">
-                  <li className="flex items-start">
-                    <svg className="w-5 h-5 text-primary-300 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"></path></svg>
-                    Process up to 20 images in a single batch
-                  </li>
-                  <li className="flex items-start">
-                    <svg className="w-5 h-5 text-primary-300 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"></path></svg>
-                    Apply text replacement, scene transformation, or style transfer
-                  </li>
-                  <li className="flex items-start">
-                    <svg className="w-5 h-5 text-primary-300 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"></path></svg>
-                    Track processing progress in real-time
-                  </li>
-                </ul>
-                <Link href="/batch-processing" className="inline-block bg-white text-primary-900 hover:bg-primary-50 font-medium px-6 py-2.5 rounded-lg">
-                  Try Batch Processing
-                </Link>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+              <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-6">
+                <FiEdit className="w-6 h-6 text-primary-600" />
               </div>
-              <div className="relative h-64 md:h-auto bg-primary-700">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-white text-center">
-                    <div className="text-4xl font-bold mb-2">20+</div>
-                    <div className="text-xl">Images at once</div>
-                    <div className="mt-4 opacity-20">
-                      <LazyImage 
-                        src="/images/batch-processing-preview.jpg"
-                        alt="Batch Processing Preview"
-                        width={300}
-                        height={200}
-                        className="rounded-lg opacity-30"
-                      />
-                    </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Natural Language Editing</h3>
+              <p className="text-gray-600">
+                Edit images using simple text prompts. Nano-banana AI understands complex instructions like GPT for images.
+              </p>
+            </div>
+            
+            <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+              <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-6">
+                <FiThumbsUp className="w-6 h-6 text-primary-600" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Character Consistency</h3>
+              <p className="text-gray-600">
+                Maintain perfect character details across edits. This model excels at preserving faces and identities.
+              </p>
+            </div>
+            
+            <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+              <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-6">
+                <FiRefreshCcw className="w-6 h-6 text-primary-600" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Scene Preservation</h3>
+              <p className="text-gray-600">
+                Seamlessly blend edits with original backgrounds. Superior scene fusion compared to Flux Kontext.
+              </p>
+            </div>
+            
+            <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+              <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-6">
+                <FiZap className="w-6 h-6 text-primary-600" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">One-Shot Editing</h3>
+              <p className="text-gray-600">
+                Perfect results in a single attempt. Nano-banana solves one-shot image editing challenges effortlessly.
+              </p>
+            </div>
+            
+            <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+              <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-6">
+                <FiLayers className="w-6 h-6 text-primary-600" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Multi-Image Context</h3>
+              <p className="text-gray-600">
+                Process multiple images simultaneously. Support for advanced multi-image editing workflows.
+              </p>
+            </div>
+            
+            <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+              <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-6">
+                <FiBriefcase className="w-6 h-6 text-primary-600" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">AI UGC Creation</h3>
+              <p className="text-gray-600">
+                Create consistent AI influencers and UGC content. Perfect for social media and marketing campaigns.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Showcase Section */}
+      <section className="section py-20">
+        <div className="container">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Showcase</h2>
+            <p className="text-xl text-gray-600">
+              Lightning-Fast AI Creations
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { title: "AI Generated Mountain", speed: "0.8s", image: "/images/examples/result-1.jpg" },
+              { title: "Instant Garden Creation", speed: "0.6s", image: "/images/examples/result-2.jpg" },
+              { title: "Real-time Beach Synthesis", speed: "0.7s", image: "/images/examples/result-3.jpg" },
+              { title: "Rapid Aurora Generation", speed: "0.9s", image: "/images/examples/result-4.jpg" }
+            ].map((item, index) => (
+              <div key={index} className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                <div className="relative h-48 bg-gray-200">
+                  <LazyImage 
+                    src={item.image}
+                    alt={item.title}
+                    width={300}
+                    height={200}
+                    className="h-full object-cover"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="font-semibold text-gray-900 mb-2">{item.title}</h3>
+                  <div className="flex items-center text-sm text-gray-500">
+                    <FiClock className="w-4 h-4 mr-1" />
+                    {item.speed}
                   </div>
                 </div>
               </div>
-            </div>
+            ))}
+          </div>
+          
+          <div className="text-center mt-12">
+            <Link href="/examples" className="inline-flex items-center px-6 py-3 bg-primary-600 text-white font-medium rounded-lg hover:bg-primary-700 transition-colors">
+              View More Examples
+            </Link>
           </div>
         </div>
       </section>
       
-      {/* Comparison Section */}
-      <section className="section bg-gray-50">
+      {/* User Reviews Section */}
+      <section className="section py-20">
         <div className="container">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900">Industry-Leading Performance</h2>
-            <p className="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">
-              See how Nano-Banana outperforms other leading AI image models across key metrics
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">User Reviews</h2>
+            <p className="text-xl text-gray-600">
+              What creators are saying
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <OptimizedComparisonCard 
-              title="Text Replacement Accuracy"
-              nanoBananaScore={9.8}
-              competitorName="FLUX Kontext"
-              competitorScore={7.2}
-              imagePath="/images/comparison-text.jpg"
-            />
-            <OptimizedComparisonCard 
-              title="Scene Transformation Quality"
-              nanoBananaScore={9.6}
-              competitorName="DALL-E 3"
-              competitorScore={7.8}
-              imagePath="/images/comparison-scene.jpg"
-            />
-            <OptimizedComparisonCard 
-              title="Processing Speed"
-              nanoBananaScore={9.5}
-              competitorName="Midjourney"
-              competitorScore={7.6}
-              imagePath="/images/comparison-speed.jpg"
-            />
-          </div>
-          
-          <div className="mt-10 text-center">
-            <Link href="/comparison" className="btn btn-primary inline-block">
-              See Full Comparison
-            </Link>
-            <div className="mt-4 text-sm">
-              <Link href="/news/nano-banana-2025-08-26" className="text-primary-600 hover:text-primary-800">Latest update: Aug 26, 2025 →</Link>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      {/* Latest Tutorials Section */}
-      <section className="section">
-        <div className="container">
-          <div className="flex justify-between items-end mb-12">
-            <div>
-              <h2 className="text-3xl font-bold text-gray-900">Latest Tutorials</h2>
-              <p className="mt-4 text-xl text-gray-600">
-                Learn how to make the most of Nano-Banana with our expert guides
-              </p>
-            </div>
-            <Link href="/tutorials" className="text-primary-600 font-medium hover:text-primary-800">
-              View All Tutorials →
-            </Link>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <OptimizedTutorialCard 
-              title="Getting Started with Nano-Banana"
-              description="Learn the basics of Nano-Banana AI model, how to access it, and start creating your first edits with simple prompts."
-              imagePath="/images/tutorial-getting-started.jpg"
-              slug="getting-started"
-              readTime={10}
-              difficulty="Beginner"
-              date="August 15, 2025"
-            />
-            <OptimizedTutorialCard 
-              title="Mastering Text Replacement"
-              description="Discover advanced techniques for perfect text replacement, including matching fonts, maintaining backgrounds, and preserving design elements."
-              imagePath="/images/tutorial-text-replacement.jpg"
-              slug="text-replacement"
-              readTime={15}
-              difficulty="Intermediate"
-              date="August 14, 2025"
-            />
-            <OptimizedTutorialCard 
-              title="Advanced Scene Transformations"
-              description="Take your scene editing to the next level with expert techniques for maintaining subject integrity while completely changing environments."
-              imagePath="/images/tutorial-scene-transformation.jpg"
-              slug="scene-transformation"
-              readTime={20}
-              difficulty="Advanced"
-              date="August 12, 2025"
-            />
+            {[
+              {
+                name: "AIArtistPro",
+                role: "Digital Creator",
+                content: "This editor completely changed my workflow. The character consistency is incredible - miles ahead of Flux Kontext!",
+                rating: 5
+              },
+              {
+                name: "ContentCreator",
+                role: "UGC Specialist",
+                content: "Creating consistent AI influencers has never been easier. It maintains perfect face details across edits!",
+                rating: 5
+              },
+              {
+                name: "PhotoEditor",
+                role: "Professional Editor",
+                content: "One-shot editing is basically solved with this tool. The scene blending is so natural and realistic!",
+                rating: 5
+              }
+            ].map((review, index) => (
+              <div key={index} className="bg-white p-8 rounded-2xl shadow-lg">
+                <div className="flex items-center mb-4">
+                  <div className="flex text-yellow-400">
+                    {[...Array(review.rating)].map((_, i) => (
+                      <FiStar key={i} className="w-5 h-5 fill-current" />
+                    ))}
+                  </div>
+                </div>
+                <p className="text-gray-600 mb-6 italic">"{review.content}"</p>
+                <div>
+                  <div className="font-semibold text-gray-900">{review.name}</div>
+                  <div className="text-sm text-gray-500">{review.role}</div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
       
       {/* CTA Section */}
-      <section className="section bg-primary-900 text-white">
+      <section className="section bg-primary-900 text-white py-20">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-6">Ready to Transform Your Images?</h2>
-            <p className="text-xl text-primary-50 mb-8">
-              Start using Nano-Banana today and experience the next generation of AI image editing
+            <h2 className="text-4xl font-bold mb-6">Experience the power of Nano Banana yourself</h2>
+            <p className="text-xl text-primary-100 mb-8">
+              Join creators worldwide using the most advanced AI image generator available today
             </p>
-            <Link href="/tutorials/getting-started" className="btn bg-white text-primary-900 hover:bg-primary-50 px-8 py-3 rounded-md font-medium inline-block">
-              Get Started Now
+            <Link href="/try-generator" className="inline-flex items-center px-8 py-4 bg-white text-primary-900 font-semibold rounded-lg hover:bg-primary-50 transition-colors">
+              Try Nano Banana Generator
             </Link>
+            <p className="text-sm text-primary-200 mt-4">No credit card required</p>
           </div>
         </div>
       </section>
-      
-
     </Layout>
   );
 }

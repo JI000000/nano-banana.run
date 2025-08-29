@@ -38,6 +38,13 @@ interface PerformanceComparison {
 }
 
 export default function Comparison() {
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Features & Comparison - Nano Banana",
+    "description": "Compare Nano Banana's advanced AI image editing features with competitors. See why our model outperforms Flux Kontext and others.",
+    "url": "https://nano-banana.run/comparison"
+  };
   // Feature comparison data
   const featureComparisons: FeatureComparison[] = [
     {
@@ -163,9 +170,10 @@ export default function Comparison() {
 
   return (
     <Layout
-      title="Nano-Banana vs Other AI Image Models | Detailed Comparison"
-      description="Compare Nano-Banana with FLUX Kontext, DALL-E, and Midjourney. See how it outperforms in text replacement, scene transformations, and style consistency."
-      keywords="nano-banana comparison, AI model comparison, flux kontext vs nano-banana, dall-e vs nano-banana, midjourney vs nano-banana"
+      title="Features & Comparison - Nano Banana"
+      description="Compare Nano Banana's advanced AI image editing features with competitors. See why our model outperforms Flux Kontext and others."
+      keywords="nano banana features, ai image editor comparison, flux kontext vs nano banana, text replacement accuracy, scene transformation quality"
+      structuredData={websiteSchema}
     >
       {/* Hero */}
       <section className="bg-gradient-to-br from-primary-900 to-primary-700 text-white py-12 md:py-20">

@@ -334,21 +334,7 @@ const TryGenerator: React.FC = () => {
               </h2>
               
               {/* Image Processor Component */}
-              {file && (
-                <ImageProcessor 
-                  processingType={mode}
-                  image={file}
-                  textToReplace={mode === 'text' ? prompt.split(' to ')[0] : undefined}
-                  newText={mode === 'text' ? prompt.split(' to ')[1] : undefined}
-                  sceneDescription={mode === 'scene' ? prompt : undefined}
-                  regions={mode === 'multi-region' ? regions : undefined}
-                  options={{ smartWorkflow: isSmartWorkflow }}
-                  onProcessingComplete={(url) => { handleProcessingComplete(url); trackEvent(GAEvents.generate_complete, { mode }); }}
-                  onError={(err) => { handleProcessingError(err); trackEvent(GAEvents.generate_error, { mode, message: err.message }); }}
-                  smartWorkflow={isSmartWorkflow}
-                  suggestedParams={suggestedParams}
-                />
-              )}
+              <ImageProcessor />
               
               {/* Result display */}
               {resultImage && status !== 'loading' && (
