@@ -120,7 +120,7 @@ const BatchProcessingPage: React.FC = () => {
                   {examplePrompts[mode].map((examplePrompt, index) => (
                     <button
                       key={index}
-                      onClick={() => useExamplePrompt(examplePrompt)}
+                      onClick={() => setPrompt(examplePrompt)}
                       className="px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-xs text-gray-800"
                     >
                       {examplePrompt}

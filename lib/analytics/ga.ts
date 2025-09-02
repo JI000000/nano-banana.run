@@ -1,10 +1,9 @@
-export type GAEventParams = Record<string, any>;
+export type GAEventParams = Record<string, unknown>;
 
 export function trackEvent(eventName: string, params: GAEventParams = {}): void {
   if (typeof window === 'undefined') return;
   // gtag injected in _app.tsx
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const gtagFn = (window as any).gtag;
+  const gtagFn = (window as { gtag?: Function }).gtag;
   if (typeof gtagFn === 'function') {
     gtagFn('event', eventName, params);
   }

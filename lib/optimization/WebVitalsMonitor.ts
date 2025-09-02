@@ -159,4 +159,6 @@ export function analyzeWebVitals(metrics: WebVitalsMetric[]): string[] {
   return suggestions;
 }
 
-export default { measureWebVitals, analyzeWebVitals };
+const WebVitalsMonitor = { measureWebVitals, analyzeWebVitals };
+
+export default WebVitalsMonitor;

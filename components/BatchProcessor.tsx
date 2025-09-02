@@ -49,14 +49,7 @@ const BatchProcessor: React.FC<BatchProcessorProps> = ({
     status
   } = useApi({
     onError: (err) => {
-      if (currentIndex >= 0 && currentIndex < images.length) {
-        const updatedImages = [...images];
-        updatedImages[currentIndex].status = 'error';
-        updatedImages[currentIndex].error = err.message;
-        setImages(updatedImages);
-      }
-      
-      setError(`Error processing image ${currentIndex + 1}: ${err.message}`);
+      setError(`Error processing image ${currentIndex + 1}: ${err.toString()}`);
     }
   });
   
