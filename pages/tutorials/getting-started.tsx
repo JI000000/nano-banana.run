@@ -205,7 +205,7 @@ export default function GettingStartedTutorial() {
               <h2 className="text-2xl font-bold text-gray-900 mb-4">Creating Your First Edit</h2>
               
               <p className="text-lg text-gray-700 mb-6">
-                Let's walk through a simple text replacement exercise, one of Nano‑Banana's strongest capabilities. You can also <Link href="/try-generator?mode=text" className="text-primary-600 hover:text-primary-800">open the editor preset</Link> and follow the same steps.
+                Let's walk through a simple text replacement exercise, one of Nano‑Banana's strongest capabilities. You can also <Link href="/image-editor?mode=text" className="text-primary-600 hover:text-primary-800">open the editor preset</Link> and follow the same steps.
               </p>
               
               <div className="bg-white border border-gray-200 rounded-lg p-6 mb-6">

@@ -15,7 +15,7 @@ const Hero: React.FC<HeroProps> = ({
   title,
   description,
   primaryBtnText = 'Try It Now',
-  primaryBtnLink = '/try-generator',
+  primaryBtnLink = '/image-editor',
   secondaryBtnText = 'View Examples',
   secondaryBtnLink = '/examples',
 }) => {

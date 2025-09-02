@@ -194,7 +194,7 @@ const EnhancedFeaturesPage: React.FC = () => {
               Experience the full power of Nano-Banana's latest improvements
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/try-generator" className="btn bg-white text-primary-900 hover:bg-primary-50 px-8 py-4 rounded-md font-medium inline-flex items-center justify-center">
+              <Link href="/image-editor" className="btn bg-white text-primary-900 hover:bg-primary-50 px-8 py-4 rounded-md font-medium inline-flex items-center justify-center">
                 Try the Generator <FiArrowRight className="ml-2" />
               </Link>
               <Link href="/tutorials" className="btn border border-white text-white hover:bg-primary-800 px-8 py-4 rounded-md font-medium inline-flex items-center justify-center">

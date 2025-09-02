@@ -63,7 +63,7 @@ export default function Home() {
         title="Transform any image with simple text prompts"
         description="Nano-banana's advanced model delivers consistent character editing and scene preservation that surpasses Flux Kontext. Experience the future of AI image editing."
         primaryBtnText="Try The AI Editor"
-        primaryBtnLink="/try-generator"
+        primaryBtnLink="/image-editor"
         secondaryBtnText="View Examples"
         secondaryBtnLink="/examples"
       />
@@ -261,7 +261,7 @@ export default function Home() {
             <p className="text-xl text-primary-100 mb-8">
               Join creators worldwide using the most advanced AI image generator available today
             </p>
-            <Link href="/try-generator" className="inline-flex items-center px-8 py-4 bg-white text-primary-900 font-semibold rounded-lg hover:bg-primary-50 transition-colors">
+            <Link href="/image-editor" className="inline-flex items-center px-8 py-4 bg-white text-primary-900 font-semibold rounded-lg hover:bg-primary-50 transition-colors">
               Try Nano Banana Generator
             </Link>
             <p className="text-sm text-primary-200 mt-4">No credit card required</p>

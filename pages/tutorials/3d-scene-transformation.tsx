@@ -177,7 +177,7 @@ const SceneTransformationTutorial: React.FC = () => {
           <TutorialSection title="Copy‑ready Prompts" icon={<FiRefreshCw className="text-primary-600" />}>
             <CodeBlock>{`Move subjects from an office to a snowy mountain at golden hour while preserving identical pose, clothing details and facial identity. Keep lighting from top‑right and cast long soft shadows on snow.`}</CodeBlock>
             <CodeBlock>{`Blend person from Image A and pet from Image B into a basketball court scene. Keep both identities consistent and match floor reflections and perspective.`}</CodeBlock>
-            <p className="mt-3"><Link href="/try-generator?mode=scene" className="text-primary-600 hover:text-primary-800">Open preset in the editor →</Link></p>
+            <p className="mt-3"><Link href="/image-editor?mode=scene" className="text-primary-600 hover:text-primary-800">Open preset in the editor →</Link></p>
           </TutorialSection>
 
           {/* Introduction */}
@@ -707,7 +707,7 @@ in the distance. Ensure all people have appropriate rain reactions in posture.`}
             <p className="text-lg text-primary-100 mb-8">
               Put your new knowledge to work and experience the power of our 3D-aware scene transformation.
             </p>
-            <Link href="/try-generator" className="btn bg-white text-primary-900 hover:bg-primary-50 px-8 py-3 rounded-md font-medium inline-block">
+            <Link href="/image-editor" className="btn bg-white text-primary-900 hover:bg-primary-50 px-8 py-3 rounded-md font-medium inline-block">
               Try It Now
             </Link>
           </div>

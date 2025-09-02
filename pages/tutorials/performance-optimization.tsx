@@ -724,7 +724,7 @@ nano.enableAdvancedPerformanceOptions()
             <p className="text-lg text-primary-100 mb-8">
               Try our enhanced processing features and see the difference in speed and efficiency.
             </p>
-            <Link href="/try-generator" className="btn bg-white text-primary-900 hover:bg-primary-50 px-8 py-3 rounded-md font-medium inline-block">
+            <Link href="/image-editor" className="btn bg-white text-primary-900 hover:bg-primary-50 px-8 py-3 rounded-md font-medium inline-block">
               Try It Now
             </Link>
           </div>

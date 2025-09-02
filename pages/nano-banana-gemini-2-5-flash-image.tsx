@@ -44,7 +44,7 @@ export default function NanoBananaGeminiLanding() {
             This guide consolidates public information about <strong>Nano Banana</strong> — also referred to as <strong>Gemini 2.5 Flash Image</strong> — to help creators quickly understand its strengths, how to try it, and how it compares to other models.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
-            <Link href="/try-generator" className="btn btn-primary inline-block">Try the Editor</Link>
+            <Link href="/image-editor" className="btn btn-primary inline-block">Try the Editor</Link>
             <Link href="/comparison" className="btn inline-block">See Comparison</Link>
             <Link href="/tutorials" className="btn inline-block">Tutorials</Link>
             <Link href="/faq" className="btn inline-block">FAQs</Link>

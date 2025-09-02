@@ -693,7 +693,7 @@ Global: Keep the same composition and subject across all regions. Each quadrant 
             <p className="text-lg text-primary-100 mb-8">
               Put your new knowledge to work and experience the power of simultaneous region-based editing.
             </p>
-            <Link href="/try-generator" className="btn bg-white text-primary-900 hover:bg-primary-50 px-8 py-3 rounded-md font-medium inline-block">
+            <Link href="/image-editor" className="btn bg-white text-primary-900 hover:bg-primary-50 px-8 py-3 rounded-md font-medium inline-block">
               Try It Now
             </Link>
           </div>

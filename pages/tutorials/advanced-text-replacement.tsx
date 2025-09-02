@@ -141,7 +141,7 @@ const AdvancedTextReplacementTutorial: React.FC = () => {
             <CodeBlock>{`Replace "COMING SOON" with "NOW OPEN" while preserving all layout, logos, QR codes and shadows. Keep exact font size and baseline.`}</CodeBlock>
             <CodeBlock>{`Translate all visible text to Japanese. Keep the same typography, spacing and background intact. Output should match the original style.`}</CodeBlock>
             <CodeBlock>{`Update phone number from "(555) 123‑4567" to "(415) 555‑0199" and preserve every other element exactly.`}</CodeBlock>
-            <p className="mt-3"><Link href="/try-generator?mode=text" className="text-primary-600 hover:text-primary-800">Open preset in the editor →</Link></p>
+            <p className="mt-3"><Link href="/image-editor?mode=text" className="text-primary-600 hover:text-primary-800">Open preset in the editor →</Link></p>
           </TutorialSection>
           
           {/* What's New Section */}
@@ -530,7 +530,7 @@ Preserve exact depth and lighting angles.`}
             <p className="text-lg text-primary-100 mb-8">
               Put your new knowledge to work and experience the power of our enhanced text replacement system.
             </p>
-            <Link href="/try-generator" className="btn bg-white text-primary-900 hover:bg-primary-50 px-8 py-3 rounded-md font-medium inline-block">
+            <Link href="/image-editor" className="btn bg-white text-primary-900 hover:bg-primary-50 px-8 py-3 rounded-md font-medium inline-block">
               Try It Now
             </Link>
           </div>

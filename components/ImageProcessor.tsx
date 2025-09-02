@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react';
+import Image from 'next/image';
 import { 
   FiUpload, 
   FiZap, 
@@ -13,9 +14,12 @@ import {
   FiCheck,
   FiX,
   FiImage,
-  FiRefreshCw
+  FiRefreshCw,
+  FiEye
 } from 'react-icons/fi';
 import { AIServiceManager, urlToFile, ImageAnalysis, fileToBase64 } from '../lib/api/MockAIService';
+import SmartPromptSuggester from './SmartPromptSuggester';
+import RealTimePreview from './RealTimePreview';
 
 // 预设提示词模板
 const PROMPT_TEMPLATES = [
@@ -53,6 +57,16 @@ export default function ImageProcessor({ className = '' }: ImageProcessorProps) 
   const [imageQuality, setImageQuality] = useState<'standard' | 'hd'>('hd');
   const [aiService] = useState(() => new AIServiceManager('openrouter'));
 
+  // 分析上传的图片（稳定引用）
+  const analyzeUploadedImage = useCallback(async (file: File) => {
+    try {
+      const analysis = await aiService.analyzeImage(file);
+      setImageAnalysis(analysis);
+    } catch (error) {
+      console.error('Image analysis failed:', error);
+    }
+  }, [aiService]);
+
   // 处理图片上传
   const handleImageUpload = useCallback(async (file: File) => {
     const reader = new FileReader();
@@ -62,17 +76,7 @@ export default function ImageProcessor({ className = '' }: ImageProcessorProps) 
       analyzeUploadedImage(file);
     };
     reader.readAsDataURL(file);
-  }, []);
-
-  // 分析上传的图片
-  const analyzeUploadedImage = async (file: File) => {
-    try {
-      const analysis = await aiService.analyzeImage(file);
-      setImageAnalysis(analysis);
-    } catch (error) {
-      console.error('Image analysis failed:', error);
-    }
-  };
+  }, [analyzeUploadedImage]);
 
   // 处理拖拽上传
   const handleDrop = useCallback((e: React.DragEvent) => {
@@ -161,71 +165,73 @@ export default function ImageProcessor({ className = '' }: ImageProcessorProps) 
     }
   };
 
-  // 使用热门提示词
-  const usePopularPrompt = (popularPrompt: string) => {
+  // 使用热门提示词（避免被误判为Hook）
+  const selectPopularPrompt = (popularPrompt: string) => {
     setPrompt(popularPrompt);
   };
 
   return (
-    <div className={`max-w-6xl mx-auto p-8 ${className}`}>
-      {/* 三个区块完全上下排列 - 彻底重新设计 */}
-      <div className="space-y-12">
+    <div className={`max-w-6xl mx-auto p-4 ${className}`}>
+      {/* 三个区块完全上下排列 - 超紧凑设计 */}
+      <div className="space-y-6">
         
         {/* ===== 第一区块：Upload Image ===== */}
-        <div className="bg-white rounded-3xl p-12 shadow-xl border border-gray-100">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4 flex items-center justify-center">
-              <FiUpload className="w-10 h-10 mr-4 text-primary-600" />
+        <div className="bg-white rounded-xl p-6 shadow-md border border-gray-100">
+          <div className="text-center mb-4">
+            <h2 className="text-xl font-bold text-gray-900 mb-2 flex items-center justify-center">
+              <FiUpload className="w-8 h-8 mr-3 text-primary-600" />
               Upload Image
             </h2>
-            <p className="text-lg text-gray-600">Start by uploading your image to begin the AI transformation</p>
+            <p className="text-sm text-gray-600">Start by uploading your image to begin the AI transformation</p>
           </div>
           
           <div
-            className={`border-3 border-dashed rounded-3xl p-20 text-center transition-all duration-300 ${
+            className={`border-2 border-dashed rounded-xl p-8 text-center transition-all duration-300 ${
               selectedImage 
-                ? 'border-primary-500 bg-primary-50 shadow-lg' 
+                ? 'border-primary-500 bg-primary-50 shadow-md' 
                 : 'border-gray-300 hover:border-primary-400 hover:bg-gray-50'
             }`}
             onDrop={handleDrop}
             onDragOver={(e) => e.preventDefault()}
           >
             {selectedImage ? (
-              <div className="space-y-8">
+              <div className="space-y-4">
                 <div className="relative inline-block">
-                  <img 
+                  <Image 
                     src={selectedImage} 
                     alt="Uploaded" 
-                    className="max-h-96 mx-auto rounded-2xl shadow-2xl"
+                    width={280}
+                    height={280}
+                    className="max-h-64 mx-auto rounded-lg shadow-md object-contain"
                   />
-                  <div className="absolute -top-4 -right-4">
+                  <div className="absolute -top-3 -right-3">
                     <button
                       onClick={() => setSelectedImage(null)}
-                      className="bg-red-500 hover:bg-red-600 text-white rounded-full p-3 shadow-lg transition-colors"
+                      className="bg-red-500 hover:bg-red-600 text-white rounded-full p-2 shadow-md transition-colors"
                     >
-                      <FiX className="w-6 h-6" />
+                      <FiX className="w-5 h-5" />
                     </button>
                   </div>
                 </div>
                 <div className="text-center">
-                  <p className="text-lg text-gray-600 mb-2">Image uploaded successfully!</p>
-                  <p className="text-sm text-gray-500">Ready for AI transformation</p>
+                  <p className="text-sm text-gray-600 mb-1">Image uploaded successfully!</p>
+                  <p className="text-xs text-gray-500">Ready for AI transformation</p>
                 </div>
               </div>
             ) : (
-              <div className="space-y-8">
+              <div className="space-y-4">
                 <div className="relative">
-                  <FiUpload className="w-24 h-24 mx-auto text-gray-400 mb-6" />
+                  <FiUpload className="w-16 h-16 mx-auto text-gray-400 mb-3" />
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="bg-primary-600 text-white rounded-full p-4 shadow-lg">
-                      <FiImage className="w-8 h-8" />
+                    <div className="bg-primary-600 text-white rounded-full p-3 shadow-md">
+                      <FiImage className="w-6 h-6" />
                     </div>
                   </div>
                 </div>
-                <div className="space-y-4">
-                  <p className="text-2xl font-semibold text-gray-700">Drag & drop your image here</p>
-                  <p className="text-lg text-gray-500">or</p>
-                  <label className="inline-block bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-xl font-semibold text-lg cursor-pointer transition-colors shadow-lg">
+                <div className="space-y-2">
+                  <p className="text-lg font-semibold text-gray-700">Drag & drop your image here</p>
+                  <p className="text-sm text-gray-500">or</p>
+                  <label className="inline-block bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg font-semibold text-base cursor-pointer transition-colors shadow-md">
                     Browse Files
                     <input
                       type="file"
@@ -235,9 +241,9 @@ export default function ImageProcessor({ className = '' }: ImageProcessorProps) 
                     />
                   </label>
                 </div>
-                <div className="bg-gray-50 rounded-xl p-6 max-w-md mx-auto">
-                  <p className="text-base text-gray-600 mb-2">Supported formats:</p>
-                  <p className="text-sm text-gray-500">JPG, PNG, WebP, GIF (Max 10MB)</p>
+                <div className="bg-gray-50 rounded-lg p-3 max-w-md mx-auto">
+                  <p className="text-xs text-gray-600 mb-1">Supported formats:</p>
+                  <p className="text-xs text-gray-500">JPG, PNG, WebP, GIF (Max 10MB)</p>
                 </div>
               </div>
             )}
@@ -245,41 +251,41 @@ export default function ImageProcessor({ className = '' }: ImageProcessorProps) 
         </div>
 
         {/* ===== 第二区块：Edit Mode ===== */}
-        <div className="bg-white rounded-3xl p-12 shadow-xl border border-gray-100">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4 flex items-center justify-center">
-              <FiZap className="w-10 h-10 mr-4 text-primary-600" />
+        <div className="bg-white rounded-xl p-6 shadow-md border border-gray-100">
+          <div className="text-center mb-4">
+            <h2 className="text-xl font-bold text-gray-900 mb-2 flex items-center justify-center">
+              <FiZap className="w-8 h-8 mr-3 text-primary-600" />
               Edit Mode
             </h2>
-            <p className="text-lg text-gray-600">Describe your vision and configure generation settings</p>
+            <p className="text-sm text-gray-600">Describe your vision and configure generation settings</p>
           </div>
           
-          <div className="grid grid-cols-1 xl:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 xl:grid-cols-5 gap-6">
             
-            {/* 左侧：提示词输入区域 */}
-            <div className="xl:col-span-2 space-y-8">
+            {/* 左侧：核心编辑区域 (3/5宽度) */}
+            <div className="xl:col-span-3 space-y-4">
               
               {/* 主要提示词输入 */}
-              <div className="bg-gray-50 rounded-2xl p-8">
-                <h3 className="text-2xl font-semibold text-gray-900 mb-6 flex items-center">
-                  <FiEdit3 className="w-8 h-8 mr-3 text-primary-600" />
+              <div className="bg-gray-50 rounded-lg p-5">
+                <h3 className="text-lg font-semibold text-gray-900 mb-3 flex items-center">
+                  <FiEdit3 className="w-6 h-6 mr-2 text-primary-600" />
                   Describe Your Vision
                 </h3>
                 <textarea
                   value={prompt}
                   onChange={(e) => setPrompt(e.target.value)}
                   placeholder="Describe the image you want to generate... (e.g., A beautiful sunset over mountains, digital art style, cinematic lighting, 4K quality)"
-                  className="w-full h-56 p-6 border-2 border-gray-200 rounded-xl resize-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-lg transition-colors"
+                  className="w-full h-36 p-3 border-2 border-gray-200 rounded-lg resize-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-sm transition-colors"
                 />
-                <div className="mt-4 flex items-center text-sm text-gray-500">
-                  <FiInfo className="w-4 h-4 mr-2" />
+                <div className="mt-2 flex items-center text-xs text-gray-500">
+                  <FiInfo className="w-3 h-3 mr-2" />
                   Be specific about style, mood, lighting, and artistic direction
                 </div>
               </div>
 
               {/* 样式模板 */}
-              <div className="bg-gray-50 rounded-2xl p-8">
-                <h3 className="text-xl font-semibold text-gray-900 mb-6">Style Templates</h3>
+              <div className="bg-gray-50 rounded-xl p-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">Style Templates</h3>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   {PROMPT_TEMPLATES.map((template) => (
                     <button
@@ -292,7 +298,7 @@ export default function ImageProcessor({ className = '' }: ImageProcessorProps) 
                       }`}
                     >
                       <div className="text-center">
-                        <div className="text-lg font-medium">{template.name}</div>
+                        <div className="text-base font-medium">{template.name}</div>
                       </div>
                     </button>
                   ))}
@@ -300,13 +306,13 @@ export default function ImageProcessor({ className = '' }: ImageProcessorProps) 
               </div>
 
               {/* 热门提示词 */}
-              <div className="bg-gray-50 rounded-2xl p-8">
-                <h3 className="text-xl font-semibold text-gray-900 mb-6">Popular Prompts</h3>
+              <div className="bg-gray-50 rounded-xl p-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">Popular Prompts</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {POPULAR_PROMPTS.slice(0, 6).map((popularPrompt, index) => (
                     <button
                       key={index}
-                      onClick={() => usePopularPrompt(popularPrompt)}
+                      onClick={() => selectPopularPrompt(popularPrompt)}
                       className="text-left p-4 bg-white hover:bg-primary-50 text-gray-700 rounded-xl transition-all duration-200 border-2 border-gray-200 hover:border-primary-300"
                     >
                       <div className="text-sm font-medium">{popularPrompt}</div>
@@ -317,8 +323,8 @@ export default function ImageProcessor({ className = '' }: ImageProcessorProps) 
 
               {/* AI建议的提示词 */}
               {imageAnalysis && imageAnalysis.suggestedPrompts.length > 0 && (
-                <div className="bg-yellow-50 border-2 border-yellow-200 rounded-2xl p-8">
-                  <div className="flex items-center text-xl font-semibold text-yellow-800 mb-6">
+                <div className="bg-yellow-50 border-2 border-yellow-200 rounded-xl p-6">
+                  <div className="flex items-center text-lg font-semibold text-yellow-800 mb-4">
                     <FiLightbulb className="w-8 h-8 mr-3 text-yellow-600" />
                     AI Suggested Prompts
                   </div>
@@ -337,16 +343,50 @@ export default function ImageProcessor({ className = '' }: ImageProcessorProps) 
               )}
             </div>
 
-            {/* 右侧：生成控制区域 */}
-            <div className="xl:col-span-1 space-y-8">
+            {/* 右侧：智能辅助和预览区域 (2/5宽度) */}
+            <div className="xl:col-span-2 space-y-6">
               
-              {/* 生成按钮 */}
-              <div className="bg-gradient-to-br from-primary-600 to-primary-700 rounded-2xl p-8 text-center">
-                <h3 className="text-2xl font-bold text-white mb-6">Ready to Generate?</h3>
+              {/* Real-time Preview - 放在最上方，突出显示 */}
+              <div className="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-xl p-6">
+                <h3 className="text-lg font-semibold text-blue-900 mb-4 flex items-center">
+                  <FiEye className="w-6 h-6 mr-2 text-blue-600" />
+                  Live Preview
+                </h3>
+                <RealTimePreview
+                  prompt={prompt}
+                  baseImage={selectedImage || undefined}
+                  metadata={{
+                    style: selectedTemplate,
+                    quality: imageQuality,
+                    industry: selectedTemplate ? 'general' : undefined
+                  }}
+                  className="mb-0"
+                />
+              </div>
+
+              {/* Smart Prompt Suggestions */}
+              <div className="bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200 rounded-xl p-6">
+                <h3 className="text-lg font-semibold text-green-900 mb-4 flex items-center">
+                  <FiZap className="w-6 h-6 mr-2 text-green-600" />
+                  AI Assistant
+                </h3>
+                <SmartPromptSuggester
+                  onPromptSelected={setPrompt}
+                  currentPrompt={prompt}
+                  userIndustry={selectedTemplate}
+                  preferredStyle={imageQuality}
+                  qualityLevel={imageQuality}
+                  className="mb-0"
+                />
+              </div>
+
+              {/* 生成控制区域 */}
+              <div className="bg-gradient-to-br from-primary-600 to-primary-700 rounded-xl p-6 text-center">
+                <h3 className="text-xl font-bold text-white mb-4">Ready to Generate?</h3>
                 <button
                   onClick={handleGenerate}
                   disabled={!prompt.trim() || isProcessing}
-                  className={`w-full py-6 px-8 rounded-xl font-bold text-xl transition-all duration-300 ${
+                  className={`w-full py-4 px-6 rounded-lg font-bold text-lg transition-all duration-300 ${
                     !prompt.trim() || isProcessing
                       ? 'bg-gray-400 text-gray-200 cursor-not-allowed'
                       : 'bg-white text-primary-600 hover:bg-gray-100 shadow-2xl hover:shadow-3xl transform hover:scale-105'
@@ -367,7 +407,7 @@ export default function ImageProcessor({ className = '' }: ImageProcessorProps) 
                 
                 {/* 进度条 */}
                 {isProcessing && (
-                  <div className="mt-6">
+                  <div className="mt-4">
                     <div className="w-full bg-white bg-opacity-30 rounded-full h-3">
                       <div
                         className="bg-white h-3 rounded-full transition-all duration-300 shadow-lg"
@@ -380,25 +420,25 @@ export default function ImageProcessor({ className = '' }: ImageProcessorProps) 
               </div>
 
               {/* 高级选项 */}
-              <div className="bg-gray-50 rounded-2xl p-8">
+              <div className="bg-gray-50 rounded-xl p-6">
                 <button
                   onClick={() => setShowAdvanced(!showAdvanced)}
-                  className="flex items-center justify-between w-full text-left mb-6 p-4 bg-white rounded-xl hover:bg-gray-50 transition-colors"
+                  className="flex items-center justify-between w-full text-left mb-4 p-3 bg-white rounded-lg hover:bg-gray-50 transition-colors"
                 >
-                  <span className="text-lg font-semibold text-gray-700">Advanced Options</span>
+                  <span className="text-base font-semibold text-gray-700">Advanced Options</span>
                   <FiSettings className={`w-6 h-6 transition-transform ${showAdvanced ? 'rotate-90' : ''}`} />
                 </button>
                 
                 {showAdvanced && (
-                  <div className="space-y-6 p-6 bg-white rounded-xl">
+                  <div className="space-y-4 p-4 bg-white rounded-lg">
                     <div>
-                      <label className="block text-lg font-medium text-gray-700 mb-3">
+                      <label className="block text-base font-medium text-gray-700 mb-2">
                         Image Quality
                       </label>
                       <select
                         value={imageQuality}
                         onChange={(e) => setImageQuality(e.target.value as 'standard' | 'hd')}
-                        className="w-full p-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-base transition-colors"
+                        className="w-full p-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-base transition-colors"
                       >
                         <option value="standard">Standard Quality</option>
                         <option value="hd">High Definition (HD)</option>
@@ -409,22 +449,22 @@ export default function ImageProcessor({ className = '' }: ImageProcessorProps) 
               </div>
 
               {/* 使用提示 */}
-              <div className="bg-blue-50 border-2 border-blue-200 rounded-2xl p-8">
-                <h3 className="text-xl font-semibold text-blue-900 mb-6 flex items-center">
-                  <FiLightbulb className="w-6 h-6 mr-3 text-blue-600" />
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                <h3 className="text-base font-semibold text-blue-900 mb-3 flex items-center">
+                  <FiLightbulb className="w-5 h-5 mr-2 text-blue-600" />
                   Pro Tips
                 </h3>
-                <ul className="text-blue-800 space-y-4">
+                <ul className="text-blue-800 space-y-2 text-sm">
                   <li className="flex items-start">
-                    <FiCheck className="w-5 h-5 mr-3 mt-0.5 text-blue-600 flex-shrink-0" />
+                    <FiCheck className="w-4 h-4 mr-2 mt-0.5 text-blue-600 flex-shrink-0" />
                     <span>Be specific about style and mood</span>
                   </li>
                   <li className="flex items-start">
-                    <FiCheck className="w-5 h-5 mr-3 mt-0.5 text-blue-600 flex-shrink-0" />
+                    <FiCheck className="w-4 h-4 mr-2 mt-0.5 text-blue-600 flex-shrink-0" />
                     <span>Include lighting preferences</span>
                   </li>
                   <li className="flex items-start">
-                    <FiCheck className="w-5 h-5 mr-3 mt-0.5 text-blue-600 flex-shrink-0" />
+                    <FiCheck className="w-4 h-4 mr-2 mt-0.5 text-blue-600 flex-shrink-0" />
                     <span>Mention artistic style and quality</span>
                   </li>
                 </ul>
@@ -434,36 +474,38 @@ export default function ImageProcessor({ className = '' }: ImageProcessorProps) 
         </div>
 
         {/* ===== 第三区块：Output Gallery ===== */}
-        <div className="bg-white rounded-3xl p-12 shadow-xl border border-gray-100">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4 flex items-center justify-center">
-              <FiStar className="w-10 h-10 mr-4 text-primary-600" />
+        <div className="bg-white rounded-xl p-6 shadow-md border border-gray-100">
+          <div className="text-center mb-4">
+            <h2 className="text-xl font-bold text-gray-900 mb-2 flex items-center justify-center">
+              <FiStar className="w-8 h-8 mr-3 text-primary-600" />
               Output Gallery
             </h2>
-            <p className="text-lg text-gray-600">Your AI-generated masterpiece will appear here</p>
+            <p className="text-sm text-gray-600">Your AI-generated masterpiece will appear here</p>
           </div>
           
           {resultImage ? (
-            <div className="space-y-12">
+            <div className="space-y-6">
               {/* 生成的图片展示 */}
               <div className="relative group max-w-6xl mx-auto">
-                <div className="relative overflow-hidden rounded-3xl shadow-2xl">
-                  <img
+                <div className="relative overflow-hidden rounded-lg shadow-md">
+                  <Image
                     src={resultImage}
                     alt="Generated"
-                    className="w-full h-auto"
+                    width={800}
+                    height={600}
+                    className="w-full h-auto object-contain"
                   />
                   {/* 悬停效果 */}
                   <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-                    <div className="flex space-x-6">
-                      <button className="p-4 bg-white rounded-full shadow-lg hover:bg-gray-100 transition-colors transform hover:scale-110">
-                        <FiDownload className="w-8 h-8 text-gray-700" />
+                    <div className="flex space-x-4">
+                      <button className="p-3 bg-white rounded-full shadow-md hover:bg-gray-100 transition-colors transform hover:scale-110">
+                        <FiDownload className="w-6 h-6 text-gray-700" />
                       </button>
-                      <button className="p-4 bg-white rounded-full shadow-lg hover:bg-gray-100 transition-colors transform hover:scale-110">
-                        <FiShare2 className="w-8 h-8 text-gray-700" />
+                      <button className="p-2 bg-white rounded-full shadow-md hover:bg-gray-100 transition-colors transform hover:scale-110">
+                        <FiShare2 className="w-5 h-5 text-gray-700" />
                       </button>
-                      <button className="p-4 bg-white rounded-full shadow-lg hover:bg-gray-100 transition-colors transform hover:scale-110">
-                        <FiHeart className="w-8 h-8 text-gray-700" />
+                      <button className="p-2 bg-white rounded-full shadow-md hover:bg-gray-100 transition-colors transform hover:scale-110">
+                        <FiHeart className="w-5 h-5 text-gray-700" />
                       </button>
                     </div>
                   </div>
@@ -471,36 +513,36 @@ export default function ImageProcessor({ className = '' }: ImageProcessorProps) 
               </div>
               
               {/* 操作按钮 */}
-              <div className="flex justify-center space-x-8">
-                <button className="px-12 py-6 bg-primary-600 text-white rounded-2xl hover:bg-primary-700 transition-all duration-300 font-bold text-xl shadow-lg hover:shadow-xl transform hover:scale-105">
-                  <FiDownload className="w-8 h-8 mr-4 inline" />
+              <div className="flex justify-center space-x-4">
+                <button className="px-6 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-all duration-300 font-bold text-base shadow-md hover:shadow-lg transform hover:scale-105">
+                  <FiDownload className="w-6 h-6 mr-2 inline" />
                   Download Image
                 </button>
-                <button className="px-12 py-6 bg-gray-100 text-gray-700 rounded-2xl hover:bg-gray-200 transition-all duration-300 font-bold text-xl shadow-lg hover:shadow-xl transform hover:scale-105">
-                  <FiShare2 className="w-8 h-8 mr-4 inline" />
+                <button className="px-6 py-3 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-all duration-300 font-bold text-base shadow-md hover:shadow-lg transform hover:scale-105">
+                  <FiShare2 className="w-6 h-6 mr-2 inline" />
                   Share Result
                 </button>
-                <button className="px-12 py-6 bg-red-500 text-white rounded-2xl hover:bg-red-600 transition-all duration-300 font-bold text-xl shadow-lg hover:shadow-xl transform hover:scale-105">
-                  <FiRefreshCw className="w-8 h-8 mr-4 inline" />
+                <button className="px-6 py-3 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-all duration-300 font-bold text-base shadow-md hover:shadow-lg transform hover:scale-105">
+                  <FiRefreshCw className="w-6 h-6 mr-2 inline" />
                   Generate Again
                 </button>
               </div>
             </div>
           ) : (
-            <div className="h-[600px] bg-gradient-to-br from-gray-50 to-gray-100 rounded-3xl flex items-center justify-center border-2 border-dashed border-gray-300">
+            <div className="h-[300px] bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg flex items-center justify-center border border-dashed border-gray-300">
               <div className="text-center text-gray-500 max-w-2xl">
-                <div className="relative mb-12">
-                  <FiZap className="w-40 h-40 mx-auto text-gray-300 mb-8" />
+                <div className="relative mb-6">
+                  <FiZap className="w-24 h-24 mx-auto text-gray-300 mb-4" />
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="bg-primary-600 text-white rounded-full p-6 shadow-2xl">
-                      <FiImage className="w-12 h-12" />
+                    <div className="bg-primary-600 text-white rounded-full p-4 shadow-lg">
+                      <FiImage className="w-8 h-8" />
                     </div>
                   </div>
                 </div>
-                <h3 className="text-4xl font-bold text-gray-400 mb-6">Your AI Masterpiece Awaits</h3>
-                <p className="text-xl text-gray-500 mb-8">Upload an image and describe your vision to see the magic happen</p>
-                <div className="bg-white rounded-2xl p-6 shadow-lg">
-                  <p className="text-lg text-gray-600">✨ Ready to transform your images with AI?</p>
+                <h3 className="text-2xl font-bold text-gray-400 mb-3">Your AI Masterpiece Awaits</h3>
+                <p className="text-base text-gray-500 mb-4">Upload an image and describe your vision to see the magic happen</p>
+                <div className="bg-white rounded-lg p-3 shadow-md">
+                  <p className="text-sm text-gray-600">✨ Ready to transform your images with AI?</p>
                 </div>
               </div>
             </div>

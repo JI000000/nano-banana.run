@@ -11,7 +11,7 @@ const documents = [
   { title: 'Mastering Text Replacement', url: '/tutorials/text-replacement', keywords: 'tutorial text replacement fonts background' },
   { title: 'Advanced Scene Transformations', url: '/tutorials/scene-transformation', keywords: 'tutorial scene transformation environment' },
   { title: 'FAQ', url: '/faq', keywords: 'faq pricing free google watermarks' },
-  { title: 'Try Generator', url: '/try-generator', keywords: 'editor generator upload image' },
+  { title: 'Image Editor', url: '/image-editor', keywords: 'editor generator upload image' },
   { title: 'Batch Processing', url: '/batch-processing', keywords: 'batch processing multiple images' },
   { title: 'Examples', url: '/examples', keywords: 'gallery examples outputs' },
 ];

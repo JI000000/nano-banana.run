@@ -14,7 +14,7 @@ import { GAEvents, trackEvent } from '../lib/analytics/ga';
 type EditingMode = 'text' | 'scene' | 'style' | 'multi-region';
 
 // Main component
-const TryGenerator: React.FC = () => {
+const ImageEditor: React.FC = () => {
   // State for the uploaded image
   const [image, setImage] = useState<string | null>(null);
   const [file, setFile] = useState<File | null>(null);
@@ -127,11 +127,11 @@ const TryGenerator: React.FC = () => {
 
   return (
     <Layout>
-      <div className="bg-gradient-to-br from-primary-900 to-primary-700 text-white py-12 md:py-20">
+      <div className="bg-gradient-to-br from-primary-900 to-primary-700 text-white py-8 md:py-12">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <h1 className="text-3xl md:text-4xl font-bold mb-4">Try Nano-Banana Generator</h1>
-            <p className="text-lg text-primary-100">
+            <h1 className="text-2xl md:text-3xl font-bold mb-3">Image Editor</h1>
+            <p className="text-base md:text-lg text-primary-100">
               Experience the power of our enhanced AI image editing system with improved text replacement, 
               scene transformation, and accelerated processing.
             </p>
@@ -140,43 +140,43 @@ const TryGenerator: React.FC = () => {
       </div>
       
       {/* 使用重新设计的ImageProcessor组件 */}
-      <div className="py-12">
+      <div className="py-8">
         <ImageProcessor />
       </div>
       
       {/* Pro tips section */}
-      <div className="bg-gray-50 py-12">
+      <div className="bg-gray-50 py-8">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-2xl font-bold text-center mb-8">Pro Tips</h2>
+            <h2 className="text-xl font-bold text-center mb-6">Pro Tips</h2>
             
-            <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-6">
-              <ul className="space-y-6">
+            <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-4">
+              <ul className="space-y-4">
                 <li className="flex">
                   <FiZap className="h-6 w-6 text-yellow-500 flex-shrink-0 mr-4" />
                   <div>
-                    <h3 className="font-medium mb-1">Use natural language prompts like "place in a blizzard"</h3>
+                    <h3 className="font-medium mb-0.5">Use natural language prompts like &quot;place in a blizzard&quot;</h3>
                     <p className="text-gray-600 text-sm">Our enhanced language understanding can interpret complex instructions.</p>
                   </div>
                 </li>
                 <li className="flex">
                   <FiZap className="h-6 w-6 text-yellow-500 flex-shrink-0 mr-4" />
                   <div>
-                    <h3 className="font-medium mb-1">Try "imagine the whole face" for face completion</h3>
+                    <h3 className="font-medium mb-0.5">Try &quot;imagine the whole face&quot; for face completion</h3>
                     <p className="text-gray-600 text-sm">The new face generation algorithm creates more natural facial features.</p>
                   </div>
                 </li>
                 <li className="flex">
                   <FiZap className="h-6 w-6 text-yellow-500 flex-shrink-0 mr-4" />
                   <div>
-                    <h3 className="font-medium mb-1">Maintains character consistency across all edits</h3>
+                    <h3 className="font-medium mb-0.5">Maintains character consistency across all edits</h3>
                     <p className="text-gray-600 text-sm">Our improved character preservation ensures subjects remain consistent.</p>
                   </div>
                 </li>
                 <li className="flex">
                   <FiZap className="h-6 w-6 text-yellow-500 flex-shrink-0 mr-4" />
                   <div>
-                    <h3 className="font-medium mb-1">Perfect one-shot editing - no iterations needed</h3>
+                    <h3 className="font-medium mb-0.5">Perfect one-shot editing - no iterations needed</h3>
                     <p className="text-gray-600 text-sm">With 40% higher accuracy, most edits are perfect on the first try.</p>
                   </div>
                 </li>
@@ -187,11 +187,11 @@ const TryGenerator: React.FC = () => {
       </div>
       
       {/* CTA Section */}
-      <div className="bg-primary-900 text-white py-12">
+      <div className="bg-primary-900 text-white py-10">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-6">Ready to transform more images?</h2>
-            <p className="text-lg text-primary-100 mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to transform more images?</h2>
+            <p className="text-base md:text-lg text-primary-100 mb-6">
               Learn advanced techniques and unlock the full potential of Nano-Banana
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -214,7 +214,7 @@ const TryGenerator: React.FC = () => {
             '@context': 'https://schema.org',
             '@type': 'WebApplication',
             'name': 'Nano-Banana AI Image Editor',
-            'url': 'https://nano-banana.run/try-generator',
+            'url': 'https://nano-banana.run/image-editor',
             'description': 'Experience the power of Nano-Banana AI with enhanced text replacement, scene transformation, and accelerated processing.',
             'applicationCategory': 'DesignApplication',
             'operatingSystem': 'Web browser',
@@ -230,5 +230,5 @@ const TryGenerator: React.FC = () => {
   );
 };
 
-export default TryGenerator;
+export default ImageEditor;
 

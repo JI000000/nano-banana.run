@@ -350,7 +350,7 @@ export default function TutorialsIndex() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/try-generator"
+                              href="/image-editor"
               className="px-8 py-4 bg-white text-primary-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors inline-flex items-center"
             >
               <FiZap className="w-5 h-5 mr-2" />

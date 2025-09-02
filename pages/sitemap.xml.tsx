@@ -29,7 +29,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     '/faq',
     '/contact',
     '/nano-banana-gemini-2-5-flash-image',
-    '/try-generator',
+    '/image-editor',
     '/batch-processing',
     '/search',
     '/news/nano-banana-2025-08-26',

@@ -166,7 +166,7 @@ const FAQ: React.FC = () => {
             <p className="text-xl text-gray-600 mb-8">
               Experience the most advanced AI image editor available today
             </p>
-            <Link href="/try-generator" className="inline-flex items-center px-8 py-4 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transition-colors">
+            <Link href="/image-editor" className="inline-flex items-center px-8 py-4 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transition-colors">
               Try Nano Banana Generator
             </Link>
           </div>

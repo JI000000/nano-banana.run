@@ -62,7 +62,7 @@ export default function NewsNanoBananaAug26() {
           </ol>
 
           <div className="mt-6 p-4 bg-primary-50 border border-primary-100 rounded-md">
-            <p className="text-gray-800"><strong>Hands‑on:</strong> Use our <Link href="/try-generator" className="text-primary-700 font-medium">Nano‑Banana Editor</Link> with preset prompts and Smart Workflow to reproduce these tasks in minutes.</p>
+            <p className="text-gray-800"><strong>Hands‑on:</strong> Use our <Link href="/image-editor" className="text-primary-700 font-medium">Nano‑Banana Editor</Link> with preset prompts and Smart Workflow to reproduce these tasks in minutes.</p>
           </div>
 
           <h2 className="text-xl font-semibold mt-8 mb-3">5) Sources</h2>
