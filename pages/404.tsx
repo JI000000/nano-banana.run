@@ -22,15 +22,18 @@ export default function NotFound() {
                 <FiArrowLeft className="mr-2" />
                 Return to Home
               </Link>
-              <div className="flex flex-col sm:flex-row justify-center gap-4 mt-6">
-                <Link href="/tutorials" className="text-primary-600 hover:text-primary-800">
-                  Browse Tutorials
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8 max-w-2xl mx-auto">
+                <Link href="/image-editor" className="p-4 border border-gray-200 rounded-lg hover:border-primary-300 hover:shadow-md transition-all">
+                  <h3 className="font-semibold text-gray-900 mb-2">Try Editor</h3>
+                  <p className="text-sm text-gray-600">Start editing images with Nano Banana</p>
                 </Link>
-                <Link href="/showcase" className="text-primary-600 hover:text-primary-800">
-                  View Showcase
+                <Link href="/prompts" className="p-4 border border-gray-200 rounded-lg hover:border-primary-300 hover:shadow-md transition-all">
+                  <h3 className="font-semibold text-gray-900 mb-2">Browse Prompts</h3>
+                  <p className="text-sm text-gray-600">Find professional prompts</p>
                 </Link>
-                <Link href="/contact" className="text-primary-600 hover:text-primary-800">
-                  Contact Us
+                <Link href="/tutorials" className="p-4 border border-gray-200 rounded-lg hover:border-primary-300 hover:shadow-md transition-all">
+                  <h3 className="font-semibold text-gray-900 mb-2">Learn More</h3>
+                  <p className="text-sm text-gray-600">Read our tutorials</p>
                 </Link>
               </div>
             </div>

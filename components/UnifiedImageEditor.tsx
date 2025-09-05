@@ -9,7 +9,8 @@ import {
   FiInfo,
   FiImage,
   FiType,
-  FiGrid
+  FiGrid,
+  FiCrop
 } from 'react-icons/fi';
 
 // 编辑模式类型

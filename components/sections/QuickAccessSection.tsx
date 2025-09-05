@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { FiArrowRight, FiExternalLink, FiZap, FiBook, FiCode, FiTrendingUp } from 'react-icons/fi';
+import { FiArrowRight, FiExternalLink, FiZap, FiBook, FiCode, FiTrendingUp, FiImage } from 'react-icons/fi';
 import Card from '../ui/Card';
 import Button from '../ui/Button';
 import UnifiedImageEditor from '../UnifiedImageEditor';
@@ -172,51 +172,43 @@ const QuickAccessSection: React.FC = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Link href="/tutorials" className="group">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <Link href="/tools" className="group">
+              <Card padding="md" hover={true} className="h-full group-hover:shadow-lg transition-all duration-300 border-2 border-primary-200">
+                <div className="text-center">
+                  <div className="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-primary-200 transition-colors">
+                    <FiZap className="w-6 h-6 text-primary-600" />
+                  </div>
+                  <h4 className="text-lg font-semibold text-gray-900 mb-2">Tools Suite</h4>
+                  <p className="text-sm text-gray-600">Complete suite of professional AI editing tools</p>
+                  <div className="mt-3 inline-flex items-center px-3 py-1 bg-primary-100 text-primary-700 text-xs rounded-full">
+                    <FiZap className="w-3 h-3 mr-1" />
+                    New & Improved
+                  </div>
+                </div>
+              </Card>
+            </Link>
+
+            <Link href="/image-editor" className="group">
               <Card padding="md" hover={true} className="h-full group-hover:shadow-lg transition-all duration-300">
                 <div className="text-center">
                   <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-200 transition-colors">
-                    <FiBook className="w-6 h-6 text-blue-600" />
+                    <FiImage className="w-6 h-6 text-blue-600" />
                   </div>
-                  <h4 className="text-lg font-semibold text-gray-900 mb-2">How to Use Nano Banana</h4>
-                  <p className="text-sm text-gray-600">Complete tutorial guide with step-by-step instructions</p>
+                  <h4 className="text-lg font-semibold text-gray-900 mb-2">AI Image Editor</h4>
+                  <p className="text-sm text-gray-600">Start editing images with Nano Banana instantly</p>
                 </div>
               </Card>
             </Link>
 
-            <Link href="/nano-banana-vs-flux-kontext" className="group">
+            <Link href="/prompts" className="group">
               <Card padding="md" hover={true} className="h-full group-hover:shadow-lg transition-all duration-300">
                 <div className="text-center">
                   <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-green-200 transition-colors">
-                    <FiTrendingUp className="w-6 h-6 text-green-600" />
+                    <FiBook className="w-6 h-6 text-green-600" />
                   </div>
-                  <h4 className="text-lg font-semibold text-gray-900 mb-2">Nano Banana vs Flux Kontext</h4>
-                  <p className="text-sm text-gray-600">Detailed comparison showing why nano banana wins</p>
-                </div>
-              </Card>
-            </Link>
-
-            <Link href="/showcase" className="group">
-              <Card padding="md" hover={true} className="h-full group-hover:shadow-lg transition-all duration-300">
-                <div className="text-center">
-                  <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-purple-200 transition-colors">
-                    <FiZap className="w-6 h-6 text-purple-600" />
-                  </div>
-                  <h4 className="text-lg font-semibold text-gray-900 mb-2">Nano Banana Examples</h4>
-                  <p className="text-sm text-gray-600">Browse amazing nano banana examples and prompts</p>
-                </div>
-              </Card>
-            </Link>
-
-            <Link href="/nano-banana-api" className="group">
-              <Card padding="md" hover={true} className="h-full group-hover:shadow-lg transition-all duration-300">
-                <div className="text-center">
-                  <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:bg-orange-200 transition-colors">
-                    <FiCode className="w-6 h-6 text-orange-600" />
-                  </div>
-                  <h4 className="text-lg font-semibold text-gray-900 mb-2">Nano Banana API</h4>
-                  <p className="text-sm text-gray-600">Developer guide and API documentation</p>
+                  <h4 className="text-lg font-semibold text-gray-900 mb-2">Prompt Library</h4>
+                  <p className="text-sm text-gray-600">Professional prompts with 75% success rate</p>
                 </div>
               </Card>
             </Link>
