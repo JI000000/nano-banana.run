@@ -21,138 +21,138 @@ interface PromptItem {
 const PROMPTS_DATA: PromptItem[] = [
   {
     id: 'aspect-ratio-control',
-    title: '比例控制终极解决方案',
-    description: '解决Nano Banana比例不可控问题，让生成的图片真正可用于生产',
+    title: 'Ultimate Aspect Ratio Control Solution',
+    description: 'Solve Nano Banana aspect ratio control issues and make generated images truly production-ready',
     prompt: 'Redraw the content of Figure 1 onto Figure 2, add content to Figure 1 to fit the aspect ratio of Figure 2, completely clear the content of Figure 2, and only retain the aspect ratio of Figure 2.',
     category: 'Professional Tools',
     difficulty: 'intermediate',
-    tags: ['aspect-ratio', 'control', 'production', '比例控制'],
+    tags: ['aspect-ratio', 'control', 'production', 'professional'],
     usageCount: 2156,
     rating: 4.9,
     successRate: 90,
     tips: [
-      '图片顺序很重要，不要搞错',
-      '如果出现蓝色背景，多试几次',
-      '建议使用Gemini 2.5 Pro模型'
+      'Image order is crucial - don\'t mix them up',
+      'If blue background appears, try a few more times',
+      'Recommended to use Gemini 2.5 Pro model'
     ]
   },
   {
     id: 'anime-cosplay-figurine',
-    title: '动漫转真人Coser展示手办',
-    description: '将动漫角色转换为真人Coser，展示手办收藏',
+    title: 'Anime to Real Cosplayer Figurine Display',
+    description: 'Transform anime characters into real cosplayers showcasing figurine collections',
     prompt: 'Generate a real-life photo of a cosplayer portraying this character, with highly realistic skin texture. The cosplayer\'s hairstyle, accessories, and clothing must match the character\'s. She is sitting at a desk, holding a figurine transformed from this anime character\'s image. The figurine should be very close to the camera, with extremely detailed features. On the table behind the cosplayer, place a printed box of the character\'s figurine. Add a high-end 3D printer next to it, with a figurine being printed inside the printer. Set the entire scene in an indoor environment.',
     category: 'Creative Workshops',
     difficulty: 'advanced',
-    tags: ['cosplay', 'figurine', 'anime', '3d-printer', '动漫', '手办'],
+    tags: ['cosplay', 'figurine', 'anime', '3d-printer', 'collectibles'],
     usageCount: 1247,
     rating: 4.8,
     successRate: 85,
     tips: [
-      '选择特征明显的动漫角色',
-      '确保角色图片清晰',
-      '可以调整场景描述'
+      'Choose anime characters with distinctive features',
+      'Ensure character images are clear and high-quality',
+      'Adjust scene descriptions as needed'
     ]
   },
   {
     id: 'architecture-3d-preview',
-    title: '建筑平面图转3D预览',
-    description: '将建筑平面图转换为3D渲染图，支持交互预览',
+    title: 'Architectural Floor Plan to 3D Preview',
+    description: 'Convert architectural floor plans into 3D renderings with interactive preview capabilities',
     prompt: 'Help me convert this residential floor plan into an isometric photorealistic 3D rendering of the house.',
     category: 'Professional Tools',
     difficulty: 'intermediate',
-    tags: ['architecture', '3d', 'floor-plan', '建筑', '3D'],
+    tags: ['architecture', '3d', 'floor-plan', 'rendering'],
     usageCount: 892,
     rating: 4.7,
     successRate: 80,
     tips: [
-      '使用清晰的平面图',
-      '可以指定特定视角',
-      '添加装饰和家具描述'
+      'Use clear and detailed floor plans',
+      'Specify particular viewing angles if needed',
+      'Add decoration and furniture descriptions'
     ]
   },
   {
     id: 'recipe-generation',
-    title: '剩菜变菜谱',
-    description: '将冰箱里的剩菜变成精美的菜谱展示',
+    title: 'Leftovers to Recipe Transformation',
+    description: 'Transform leftover ingredients into beautiful recipe presentations',
     prompt: 'Turn the ingredients in the picture into a complete step-by-step recipe infographic, using a top-down perspective. Present it in a minimalist style on a white background. Include labeled photos of the ingredients, use dashed lines to connect icons representing the preparation steps, and display a photo of the final plated dish at the bottom of the infographic,At the same time, remove the background from the food items that have a background in the image and place the food on a white background.',
     category: 'Creative Workshops',
     difficulty: 'beginner',
-    tags: ['cooking', 'recipe', 'food', '烹饪', '菜谱'],
+    tags: ['cooking', 'recipe', 'food', 'infographic'],
     usageCount: 567,
     rating: 4.6,
     successRate: 75,
     tips: [
-      '确保食材图片清晰',
-      '可以添加烹饪步骤描述',
-      '调整背景和布局'
+      'Ensure ingredient images are clear and well-lit',
+      'Add detailed cooking step descriptions',
+      'Adjust background and layout as needed'
     ]
   },
   {
     id: 'drink-to-pillow',
-    title: '饮品变抱枕',
-    description: '将喜欢的饮品变成可爱的抱枕设计',
+    title: 'Beverage to Cute Pillow Design',
+    description: 'Transform favorite drinks into adorable pillow designs',
     prompt: 'Design the main object in the photo as a soft, rounded, and airy plush balloon or inflatable toy. Using smooth matte fabric texture, Do not have a plastic feeling. complemented by subtle fabric wrinkles and stitching to emphasize its inflated effect. The shape should be slightly irregular and soft, with gentle shadows and lighting to highlight its volume and realism. Place it on a clean, minimalist background (light gray or light blue) to maintain a playful sculptural aesthetic.',
     category: 'Creative Workshops',
     difficulty: 'beginner',
-    tags: ['design', 'pillow', 'drink', 'cute', '设计', '抱枕'],
+    tags: ['design', 'pillow', 'drink', 'cute', 'plush'],
     usageCount: 423,
     rating: 4.5,
     successRate: 70,
     tips: [
-      '选择形状简单的饮品',
-      '可以调整材质描述',
-      '添加个性化元素'
+      'Choose drinks with simple, recognizable shapes',
+      'Adjust material descriptions for different textures',
+      'Add personalized elements and details'
     ]
   },
   {
     id: 'educational-cards',
-    title: '教育知识卡片生成',
-    description: '生成图文并茂的教育知识卡片',
+    title: 'Educational Knowledge Card Generation',
+    description: 'Generate visually rich educational knowledge cards with text and illustrations',
     prompt: 'Help me generate multiple 16:9 doodle-style images to explain the concept of "futures" to middle school students. The images should have a consistent colorful, thick-pencil hand-drawn style, be rich in information, feature English text, use solid color backgrounds, have outlines around the cards, and include uniform titles, similar to a PowerPoint presentation.',
     category: 'Education',
     difficulty: 'intermediate',
-    tags: ['education', 'cards', 'learning', '教育', '学习'],
+    tags: ['education', 'cards', 'learning', 'visual'],
     usageCount: 334,
     rating: 4.4,
     successRate: 65,
     tips: [
-      '替换概念名称',
-      '调整目标受众',
-      '可以指定语言'
+      'Replace concept names with your target topic',
+      'Adjust target audience age group',
+      'Specify language requirements'
     ]
   },
   {
     id: 'figurine-3d-printer',
-    title: '3D手办打印机版本',
-    description: '创建3D打印机正在打印手办的场景',
+    title: '3D Figurine Printer Scene',
+    description: 'Create scenes of 3D printers actively printing collectible figurines',
     prompt: 'Please transform this car rendering into a collectible figurine. Behind it, place a figurine box printed with the car\'s image and the name "Xiaomi YU7." Next to it, add a high-end 3D printer that is currently printing the figurine. In front of the figurine box, add a round plastic base for the figurine to stand on. The PVC material of the base should have a crystal-clear, translucent texture, and set the entire scene indoors.',
     category: 'Creative Workshops',
     difficulty: 'advanced',
-    tags: ['3d-printer', 'figurine', 'collectible', '3D打印', '手办'],
+    tags: ['3d-printer', 'figurine', 'collectible', 'manufacturing'],
     usageCount: 289,
     rating: 4.3,
     successRate: 60,
     tips: [
-      '替换产品名称',
-      '调整打印机型号',
-      '可以改变场景设置'
+      'Replace product names with your target item',
+      'Adjust 3D printer model specifications',
+      'Modify scene settings and environment'
     ]
   },
   {
     id: 'building-to-icon',
-    title: '建筑转3D图标',
-    description: '将建筑照片转换为等距风格的3D图标',
+    title: 'Building to 3D Icon Conversion',
+    description: 'Convert building photos into isometric-style 3D icons',
     prompt: 'Convert the photo of this building into a rounded, cute isometric tile 3D rendering style, with a 1:1 ratio,To preserve the prominent features of the photographed building',
     category: 'Design',
     difficulty: 'beginner',
-    tags: ['building', 'icon', '3d', 'isometric', '建筑', '图标'],
+    tags: ['building', 'icon', '3d', 'isometric', 'rendering'],
     usageCount: 198,
     rating: 4.2,
     successRate: 55,
     tips: [
-      '选择特征明显的建筑',
-      '可以调整风格描述',
-      '保持建筑主要特征'
+      'Choose buildings with distinctive architectural features',
+      'Adjust style descriptions for different aesthetics',
+      'Preserve the main characteristics of the building'
     ]
   }
 ];
@@ -167,6 +167,7 @@ export default function Prompts() {
   const [sortBy, setSortBy] = useState<'popular' | 'rating' | 'recent'>('popular');
   const [selectedPrompt, setSelectedPrompt] = useState<PromptItem | null>(null);
   const [likedPrompts, setLikedPrompts] = useState<Set<string>>(new Set());
+  const [copiedPrompt, setCopiedPrompt] = useState<string | null>(null);
 
   const filteredPrompts = PROMPTS_DATA
     .filter(prompt => {
@@ -202,8 +203,10 @@ export default function Prompts() {
     });
   };
 
-  const copyPrompt = (prompt: string) => {
+  const copyPrompt = (prompt: string, promptId: string) => {
     navigator.clipboard.writeText(prompt);
+    setCopiedPrompt(promptId);
+    setTimeout(() => setCopiedPrompt(null), 2000);
   };
 
   const getDifficultyColor = (difficulty: string) => {
@@ -259,29 +262,31 @@ export default function Prompts() {
       {/* Filters Section */}
       <section className="bg-white py-8 border-b">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="flex flex-col lg:flex-row gap-6 items-start lg:items-center justify-between">
-            {/* Search */}
-            <div className="w-full lg:flex-1 lg:max-w-md">
-              <div className="relative">
-                <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
-                <input
-                  type="text"
-                  placeholder="Search prompts, tags, or descriptions..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm"
-                />
-              </div>
+          {/* Search Bar */}
+          <div className="mb-6">
+            <div className="relative max-w-md mx-auto">
+              <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+              <input
+                type="text"
+                placeholder="Search prompts, tags, or descriptions..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm"
+              />
             </div>
+          </div>
 
+          {/* Filter Buttons */}
+          <div className="space-y-4">
             {/* Category Filter */}
-            <div className="w-full lg:w-auto">
-              <div className="flex gap-2 overflow-x-auto pb-2">
+            <div>
+              <h3 className="text-sm font-medium text-gray-700 mb-3">Categories</h3>
+              <div className="flex flex-wrap gap-2">
                 {CATEGORIES.map((category) => (
                   <button
                     key={category}
                     onClick={() => setSelectedCategory(category)}
-                    className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors flex-shrink-0 ${
+                    className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                       selectedCategory === category
                         ? 'bg-primary-600 text-white shadow-md'
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -294,13 +299,14 @@ export default function Prompts() {
             </div>
 
             {/* Difficulty Filter */}
-            <div className="w-full lg:w-auto">
-              <div className="flex gap-2 overflow-x-auto pb-2">
+            <div>
+              <h3 className="text-sm font-medium text-gray-700 mb-3">Difficulty Level</h3>
+              <div className="flex flex-wrap gap-2">
                 {DIFFICULTIES.map((difficulty) => (
                   <button
                     key={difficulty}
                     onClick={() => setSelectedDifficulty(difficulty)}
-                    className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors flex-shrink-0 ${
+                    className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                       selectedDifficulty === difficulty
                         ? 'bg-primary-600 text-white shadow-md'
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -312,13 +318,16 @@ export default function Prompts() {
               </div>
             </div>
 
-            {/* Sort */}
-            <div className="flex items-center gap-2 w-full lg:w-auto">
-              <FiFilter className="w-4 h-4 text-gray-500 flex-shrink-0" />
+            {/* Sort Options */}
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <FiFilter className="w-4 h-4 text-gray-500" />
+                <span className="text-sm font-medium text-gray-700">Sort by:</span>
+              </div>
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as 'popular' | 'rating' | 'recent')}
-                className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-primary-500 w-full lg:w-auto"
+                className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-primary-500"
               >
                 <option value="popular">Most Popular</option>
                 <option value="rating">Highest Rated</option>
@@ -381,15 +390,15 @@ export default function Prompts() {
 
                   {/* Stats */}
                   <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
-                    <div className="flex items-center">
+                    <div className="flex items-center" title="Usage Count">
                       <FiTrendingUp className="w-4 h-4 mr-1" />
                       {prompt.usageCount.toLocaleString()}
                     </div>
-                    <div className="flex items-center">
+                    <div className="flex items-center" title="Rating">
                       <FiStar className="w-4 h-4 mr-1" />
                       {prompt.rating}
                     </div>
-                    <div className="flex items-center">
+                    <div className="flex items-center" title="Success Rate">
                       <FiZap className="w-4 h-4 mr-1" />
                       {prompt.successRate}%
                     </div>
@@ -405,8 +414,13 @@ export default function Prompts() {
                       View Details
                     </button>
                     <button
-                      onClick={() => copyPrompt(prompt.prompt)}
-                      className="px-3 py-2 bg-gray-100 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-200 transition-colors"
+                      onClick={() => copyPrompt(prompt.prompt, prompt.id)}
+                      className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                        copiedPrompt === prompt.id
+                          ? 'bg-green-100 text-green-700'
+                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      }`}
+                      title={copiedPrompt === prompt.id ? 'Copied!' : 'Copy prompt'}
                     >
                       <FiCopy className="w-4 h-4" />
                     </button>
@@ -489,11 +503,15 @@ export default function Prompts() {
                   </p>
                 </div>
                 <button
-                  onClick={() => copyPrompt(selectedPrompt.prompt)}
-                  className="mt-3 flex items-center text-sm text-primary-600 hover:text-primary-800"
+                  onClick={() => copyPrompt(selectedPrompt.prompt, selectedPrompt.id)}
+                  className={`mt-3 flex items-center text-sm transition-colors ${
+                    copiedPrompt === selectedPrompt.id
+                      ? 'text-green-600'
+                      : 'text-primary-600 hover:text-primary-800'
+                  }`}
                 >
                   <FiCopy className="w-4 h-4 mr-1" />
-                  Copy Prompt
+                  {copiedPrompt === selectedPrompt.id ? 'Copied!' : 'Copy Prompt'}
                 </button>
               </div>
 
