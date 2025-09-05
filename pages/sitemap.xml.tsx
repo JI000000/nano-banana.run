@@ -13,10 +13,11 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const tutorialSlugs = [
     'getting-started',
     'text-replacement',
-    'scene-transformation',
     'style-matching',
-    'batch-processing',
-    'product-photography',
+    'prompt-engineering',
+    'examples',
+    'api-guide',
+    'comparison',
   ];
   
   // Static pages
@@ -24,15 +25,13 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     '',
     '/about',
     '/tutorials',
-    '/examples',
     '/comparison',
     '/faq',
     '/contact',
-    '/nano-banana-gemini-2-5-flash-image',
     '/image-editor',
-    '/batch-processing',
-    '/search',
-    '/news/nano-banana-2025-08-26',
+    '/showcase',
+    '/nano-banana-vs-flux-kontext',
+    '/nano-banana-api',
   ];
   
   // Generate sitemap XML

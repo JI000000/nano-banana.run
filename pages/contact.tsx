@@ -48,17 +48,17 @@ export default function Contact() {
 
   return (
     <Layout
-      title="Contact Us | Nano-Banana AI Image Editing"
-      description="Get in touch with the Nano-Banana team for questions, feedback, or collaboration opportunities regarding our AI image editing resources."
-      keywords="nano-banana contact, contact us, feedback, questions, support, nano-banana AI"
+      title="Nano Banana API & Support | Contact Us | Nano Banana GitHub"
+      description="Contact us for nano banana api support, nano banana github resources, nano banana open source projects, and nano banana api pricing information. Get help with nano banana integration and development."
+      keywords="nano banana api, nano banana github, nano banana open source, nano banana api pricing, nano banana support, nano banana integration, nano banana development, nano banana api documentation, nano banana api key, nano banana api cost, nano banana api access, nano banana api tutorial, nano banana api examples, nano banana api reddit, nano banana api lmarena, nano banana api gemini, nano banana api google, nano banana api free, nano banana api 無料, nano banana api 使い方, nano banana api 使用方法"
     >
       {/* Hero */}
       <section className="bg-gradient-to-br from-primary-900 to-primary-700 text-white py-12 md:py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
+            <h1 className="text-4xl font-bold mb-4">Nano Banana API & Support - Contact Us</h1>
             <p className="text-xl text-primary-50">
-              Have questions or feedback? We'd love to hear from you!
+              Get nano banana api support, nano banana github resources, and nano banana open source help. Contact us for nano banana api pricing and integration assistance!
             </p>
           </div>
         </div>
@@ -71,31 +71,37 @@ export default function Contact() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               {/* Contact Info */}
               <div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Get In Touch</h2>
+                <h2 className="text-2xl font-bold text-gray-900 mb-6">Nano Banana API & Development Support</h2>
                 
                 <p className="text-gray-700 mb-8">
-                  Whether you have questions about Nano-Banana, feedback on our tutorials, or are interested in collaboration opportunities, we're here to help.
+                  Get help with nano banana api integration, nano banana github resources, nano banana open source projects, and nano banana api pricing. Whether you need nano banana api support, nano banana development assistance, or nano banana integration help, we're here to help.
                 </p>
                 
                 <div className="bg-gray-50 rounded-lg p-6 mb-8">
-                  <h3 className="font-semibold text-gray-900 mb-4">Common Questions</h3>
+                  <h3 className="font-semibold text-gray-900 mb-4">Nano Banana API & Development Resources</h3>
                   <ul className="space-y-3">
                     <li>
-                      <strong className="text-gray-900">Looking for tutorials?</strong>
+                      <strong className="text-gray-900">Nano Banana API Documentation?</strong>
                       <p className="text-gray-700">
-                        Check our <Link href="/tutorials" className="text-primary-600 hover:text-primary-800">tutorials section</Link> first.
+                        Check our <Link href="/tutorials" className="text-primary-600 hover:text-primary-800">nano banana api tutorial</Link> section for integration guides.
                       </p>
                     </li>
                     <li>
-                      <strong className="text-gray-900">Have a specific question?</strong>
+                      <strong className="text-gray-900">Nano Banana API Pricing?</strong>
                       <p className="text-gray-700">
-                        Our <Link href="/faq" className="text-primary-600 hover:text-primary-800">FAQ page</Link> might have the answer.
+                        Our <Link href="/faq" className="text-primary-600 hover:text-primary-800">FAQ page</Link> covers nano banana api pricing and nano banana api cost information.
                       </p>
                     </li>
                     <li>
-                      <strong className="text-gray-900">Want to see examples?</strong>
+                      <strong className="text-gray-900">Nano Banana GitHub Resources?</strong>
                       <p className="text-gray-700">
-                        Browse our <Link href="/examples" className="text-primary-600 hover:text-primary-800">examples gallery</Link>.
+                        Browse our <Link href="/showcase" className="text-primary-600 hover:text-primary-800">showcase gallery</Link> for nano banana examples and nano banana open source projects.
+                      </p>
+                    </li>
+                    <li>
+                      <strong className="text-gray-900">Nano Banana API Access?</strong>
+                      <p className="text-gray-700">
+                        Learn about nano banana api access, nano banana api key setup, and nano banana api integration through our support channels.
                       </p>
                     </li>
                   </ul>

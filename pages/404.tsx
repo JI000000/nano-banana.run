@@ -26,8 +26,8 @@ export default function NotFound() {
                 <Link href="/tutorials" className="text-primary-600 hover:text-primary-800">
                   Browse Tutorials
                 </Link>
-                <Link href="/examples" className="text-primary-600 hover:text-primary-800">
-                  View Examples
+                <Link href="/showcase" className="text-primary-600 hover:text-primary-800">
+                  View Showcase
                 </Link>
                 <Link href="/contact" className="text-primary-600 hover:text-primary-800">
                   Contact Us

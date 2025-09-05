@@ -3,7 +3,7 @@ import Layout from '../components/Layout';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FiCheck, FiMinus, FiInfo } from 'react-icons/fi';
-import OptimizedComparisonCard from '../components/OptimizedComparisonCard';
+import ComparisonCard from '../components/ComparisonCard';
 import LazyImage from '../components/LazyImage';
 
 // Feature comparison interface
@@ -170,18 +170,18 @@ export default function Comparison() {
 
   return (
     <Layout
-      title="Features & Comparison - Nano Banana"
-      description="Compare Nano Banana's advanced AI image editing features with competitors. See why our model outperforms Flux Kontext and others."
-      keywords="nano banana features, ai image editor comparison, flux kontext vs nano banana, text replacement accuracy, scene transformation quality"
+      title="Nano Banana vs Flux Kontext vs Midjourney - Complete Comparison 2025"
+      description="Nano banana vs flux kontext vs midjourney comparison. See why nano banana outperforms competitors in text replacement, scene transformation, and style consistency. Complete nano banana comparison with detailed analysis."
+      keywords="nano banana vs flux kontext, nano banana vs midjourney, nano banana comparison, flux kontext vs nano banana, nano banana features, ai image editor comparison, text replacement accuracy, scene transformation quality, nano banana vs dalle, nano banana vs stable diffusion, nano banana review, nano banana reddit, reddit nano banana, nano banana test, nano banana examples, nano banana prompt, nano banana tutorial, how to use nano banana, what is nano banana, nano banana free, nano banana api, nano banana access, nano banana google, google nano banana, nano banana gemini, gemini nano banana, nano banana ai studio, nano banana lmarena, lmarena nano banana"
       structuredData={websiteSchema}
     >
       {/* Hero */}
       <section className="bg-gradient-to-br from-primary-900 to-primary-700 text-white py-12 md:py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl font-bold mb-4">Model Comparison</h1>
+            <h1 className="text-4xl font-bold mb-4">Nano Banana vs Flux Kontext vs Midjourney - Complete Comparison</h1>
             <p className="text-xl text-primary-50">
-              See how Nano-Banana stacks up against other leading AI image models
+              See how nano banana stacks up against other leading AI image models. Nano banana vs flux kontext comparison shows superior results.
             </p>
           </div>
         </div>
@@ -461,9 +461,27 @@ export default function Comparison() {
               While each AI model has its strengths, Nano-Banana demonstrates clear advantages in text replacement accuracy, detail preservation, and style consistency. For professional workflows requiring precise edits and high-quality results, Nano-Banana provides the most reliable and consistent performance.
             </p>
             
-            <Link href="/tutorials/getting-started" className="btn btn-primary">
-              Try Nano-Banana Now
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/image-editor" className="btn btn-primary">
+                Try Nano Banana Free
+              </Link>
+              <Link href="/nano-banana-api" className="btn border border-primary-600 text-primary-600 hover:bg-primary-50">
+                View API Documentation
+              </Link>
+            </div>
+            
+            {/* Additional Resources */}
+            <div className="mt-6 flex flex-wrap justify-center gap-3">
+              <Link href="/tutorials" className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-lg hover:bg-blue-200 transition-colors text-sm">
+                How to Use Nano Banana
+              </Link>
+              <Link href="/showcase" className="inline-flex items-center px-4 py-2 bg-purple-100 text-purple-800 rounded-lg hover:bg-purple-200 transition-colors text-sm">
+                View Examples
+              </Link>
+              <Link href="/about" className="inline-flex items-center px-4 py-2 bg-gray-100 text-gray-800 rounded-lg hover:bg-gray-200 transition-colors text-sm">
+                Learn More About Nano Banana
+              </Link>
+            </div>
           </div>
         </div>
       </section>

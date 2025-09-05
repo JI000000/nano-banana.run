@@ -14,10 +14,10 @@ interface HeroProps {
 const Hero: React.FC<HeroProps> = ({
   title,
   description,
-  primaryBtnText = 'Try It Now',
+  primaryBtnText = 'Launch Editor',
   primaryBtnLink = '/image-editor',
-  secondaryBtnText = 'View Examples',
-  secondaryBtnLink = '/examples',
+  secondaryBtnText = 'View Showcase',
+  secondaryBtnLink = '/showcase',
 }) => {
   return (
     <div className="relative bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 text-white overflow-hidden">
@@ -36,7 +36,7 @@ const Hero: React.FC<HeroProps> = ({
       </div>
       
       {/* Content */}
-      <div className="container mx-auto px-4 py-20 md:py-32 relative z-10">
+      <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">
         <div className="max-w-4xl mx-auto">
           {/* Main Content */}
           <div className="text-center mb-12">
@@ -45,65 +45,55 @@ const Hero: React.FC<HeroProps> = ({
               The AI model that outperforms Flux Kontext
             </div>
             
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight mb-6 leading-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-6 leading-tight">
               {title}
             </h1>
             
-            <p className="text-xl md:text-2xl text-primary-100 mb-8 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-xl text-primary-100 mb-8 max-w-3xl mx-auto leading-relaxed">
               {description}
             </p>
             
-            {/* Key Benefits */}
-            <div className="flex flex-wrap justify-center gap-6 mb-10">
-              <div className="flex items-center text-primary-100">
-                <FiCheck className="w-5 h-5 mr-2 text-primary-300" />
-                <span className="text-sm font-medium">One-shot editing</span>
+            {/* Trust Signal */}
+            <div className="flex items-center justify-center gap-2 mb-8">
+              <div className="flex text-yellow-400">
+                {[...Array(5)].map((_, i) => (
+                  <FiCheck key={i} className="w-4 h-4 fill-current" />
+                ))}
               </div>
-              <div className="flex items-center text-primary-100">
-                <FiCheck className="w-5 h-5 mr-2 text-primary-300" />
-                <span className="text-sm font-medium">Multi-image support</span>
-              </div>
-              <div className="flex items-center text-primary-100">
-                <FiCheck className="w-5 h-5 mr-2 text-primary-300" />
-                <span className="text-sm font-medium">Natural language</span>
-              </div>
+              <span className="text-primary-100 text-sm font-medium">10K+ creators trust us</span>
             </div>
             
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link 
                 href={primaryBtnLink} 
-                className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary-900 font-semibold rounded-lg hover:bg-primary-50 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary-900 font-bold rounded-xl hover:bg-primary-50 transition-all duration-200 shadow-xl hover:shadow-2xl transform hover:-translate-y-1 text-lg"
               >
                 <FiPlay className="w-5 h-5 mr-2" />
                 {primaryBtnText}
               </Link>
               <Link 
                 href={secondaryBtnLink} 
-                className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-primary-900 transition-all duration-200"
+                className="inline-flex items-center justify-center px-8 py-4 border-2 border-white/80 text-white font-medium rounded-xl hover:bg-white hover:text-primary-900 transition-all duration-200 backdrop-blur-sm"
               >
                 {secondaryBtnText}
               </Link>
             </div>
           </div>
           
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto">
+          {/* Simple Trust Indicators */}
+          <div className="flex justify-center items-center gap-8 text-primary-200">
             <div className="text-center">
-              <div className="text-3xl font-bold text-white mb-1">&lt;1s</div>
-              <div className="text-sm text-primary-200">Generation Time</div>
+              <div className="text-2xl font-bold text-white">&lt;2s</div>
+              <div className="text-xs">Generation</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-white mb-1">100K+</div>
-              <div className="text-sm text-primary-200">Daily Images</div>
+              <div className="text-2xl font-bold text-white">4.8/5</div>
+              <div className="text-xs">Rating</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-white mb-1">95%</div>
-              <div className="text-sm text-primary-200">First-Try Success</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-white mb-1">4.9/5</div>
-              <div className="text-sm text-primary-200">User Rating</div>
+              <div className="text-2xl font-bold text-white">Free</div>
+              <div className="text-xs">To Use</div>
             </div>
           </div>
         </div>

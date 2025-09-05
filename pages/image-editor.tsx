@@ -2,16 +2,17 @@ import React, { useState, useEffect, useCallback } from 'react';
 import Layout from '../components/Layout';
 import Link from 'next/link';
 import Image from 'next/image';
-import { FiUpload, FiCpu, FiImage, FiType, FiRefreshCw, FiZap, FiCheck, FiInfo, FiLayers } from 'react-icons/fi';
+import { FiUpload, FiCpu, FiImage, FiType, FiRefreshCw, FiZap, FiCheck, FiInfo, FiLayers, FiGrid, FiEye, FiDownload, FiShare2 } from 'react-icons/fi';
 import { useApi } from '../lib/api/useApi';
-import ImageProcessor from '../components/ImageProcessor';
+import UnifiedImageEditor from '../components/UnifiedImageEditor';
 import RegionSelector from '../components/RegionSelector';
 import SmartParamsSuggester from '../components/SmartParamsSuggester';
+import BatchProcessor from '../components/BatchProcessor';
 import { RegionDefinition } from '../lib/api/ApiService';
 import { GAEvents, trackEvent } from '../lib/analytics/ga';
 
 // Tabs for different editing modes
-type EditingMode = 'text' | 'scene' | 'style' | 'multi-region';
+type EditingMode = 'text' | 'scene' | 'style' | 'multi-region' | 'batch';
 
 // Main component
 const ImageEditor: React.FC = () => {
@@ -107,6 +108,11 @@ const ImageEditor: React.FC = () => {
       "Replace poster text (Region A) and change wall color (Region B)",
       "Blur license plate (Region A) and enhance sky (Region B)",
       "Remove object (Region A) and add logo (Region B)"
+    ],
+    batch: [
+      "Process all images with the same text replacement",
+      "Apply consistent style across multiple images",
+      "Batch transform scene backgrounds"
     ]
   };
 
@@ -126,81 +132,61 @@ const ImageEditor: React.FC = () => {
   }, [image]);
 
   return (
-    <Layout>
-      <div className="bg-gradient-to-br from-primary-900 to-primary-700 text-white py-8 md:py-12">
+    <Layout
+      title="Nano Banana Free - Try Nano Banana AI Image Editor Online | How to Use Nano Banana"
+      description="Try nano banana free online! Access nano banana AI image editor with text replacement, scene transformation, and style matching. Learn how to use nano banana with our free online tool. No registration required."
+      keywords="nano banana free, try nano banana, nano banana online, nano banana ai editor, how to use nano banana, nano banana tutorial, nano banana examples, nano banana prompt, nano banana text replacement, nano banana scene transformation, nano banana style matching, nano banana google, google nano banana, nano banana gemini, gemini nano banana, nano banana ai studio, nano banana lmarena, lmarena nano banana, nano banana vs flux kontext, nano banana comparison, what is nano banana, nano banana model, nano banana ai, nano banana access, nano banana api, nano banana 使い方, nano banana使用方法, nano banana是什么, nano banana 無料, nano banana教学, nano banana exampies"
+    >
+      {/* Compact Header */}
+      <div className="bg-gradient-to-r from-primary-900 to-primary-700 text-white py-4">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h1 className="text-2xl md:text-3xl font-bold mb-3">Image Editor</h1>
-            <p className="text-base md:text-lg text-primary-100">
-              Experience the power of our enhanced AI image editing system with improved text replacement, 
-              scene transformation, and accelerated processing.
+          <div className="max-w-6xl mx-auto">
+            <h1 className="text-xl md:text-2xl font-bold mb-2">Nano Banana Free - AI Image Editor</h1>
+            <p className="text-sm md:text-base text-primary-100">
+              Try nano banana free! AI-powered image editing with enhanced text replacement and scene transformation. Learn how to use nano banana.
             </p>
           </div>
         </div>
       </div>
       
-      {/* 使用重新设计的ImageProcessor组件 */}
-      <div className="py-8">
-        <ImageProcessor />
-      </div>
-      
-      {/* Pro tips section */}
-      <div className="bg-gray-50 py-8">
+      {/* Main Content - Compact Single Page Layout */}
+      <div className="py-4">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-xl font-bold text-center mb-6">Pro Tips</h2>
+          <div className="max-w-7xl mx-auto">
             
-            <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-4">
-              <ul className="space-y-4">
-                <li className="flex">
-                  <FiZap className="h-6 w-6 text-yellow-500 flex-shrink-0 mr-4" />
-                  <div>
-                    <h3 className="font-medium mb-0.5">Use natural language prompts like &quot;place in a blizzard&quot;</h3>
-                    <p className="text-gray-600 text-sm">Our enhanced language understanding can interpret complex instructions.</p>
-                  </div>
-                </li>
-                <li className="flex">
-                  <FiZap className="h-6 w-6 text-yellow-500 flex-shrink-0 mr-4" />
-                  <div>
-                    <h3 className="font-medium mb-0.5">Try &quot;imagine the whole face&quot; for face completion</h3>
-                    <p className="text-gray-600 text-sm">The new face generation algorithm creates more natural facial features.</p>
-                  </div>
-                </li>
-                <li className="flex">
-                  <FiZap className="h-6 w-6 text-yellow-500 flex-shrink-0 mr-4" />
-                  <div>
-                    <h3 className="font-medium mb-0.5">Maintains character consistency across all edits</h3>
-                    <p className="text-gray-600 text-sm">Our improved character preservation ensures subjects remain consistent.</p>
-                  </div>
-                </li>
-                <li className="flex">
-                  <FiZap className="h-6 w-6 text-yellow-500 flex-shrink-0 mr-4" />
-                  <div>
-                    <h3 className="font-medium mb-0.5">Perfect one-shot editing - no iterations needed</h3>
-                    <p className="text-gray-600 text-sm">With 40% higher accuracy, most edits are perfect on the first try.</p>
-                  </div>
-                </li>
-              </ul>
-            </div>
+            {/* Unified Editor Layout */}
+            <UnifiedImageEditor 
+              compact={false}
+              showModeTabs={true}
+              showFeatures={true}
+              showTips={true}
+              showStats={true}
+            />
           </div>
         </div>
       </div>
       
-      {/* CTA Section */}
-      <div className="bg-primary-900 text-white py-10">
+      {/* Compact SEO Content Section */}
+      <div className="bg-gray-50 py-6">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to transform more images?</h2>
-            <p className="text-base md:text-lg text-primary-100 mb-6">
-              Learn advanced techniques and unlock the full potential of Nano-Banana
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/tutorials" className="btn bg-white text-primary-900 hover:bg-primary-50 px-6 py-3 rounded-md font-medium inline-block">
-                View Tutorials
-              </Link>
-              <Link href="/examples" className="btn border border-white text-white hover:bg-primary-800 px-6 py-3 rounded-md font-medium inline-block">
-                Browse Examples
-              </Link>
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="bg-white rounded-lg p-4 shadow-sm">
+                <h3 className="text-base font-semibold mb-2">Text Replacement</h3>
+                <p className="text-gray-600 text-xs">Intelligently replace text in images while maintaining natural fonts and layouts.</p>
+              </div>
+              <div className="bg-white rounded-lg p-4 shadow-sm">
+                <h3 className="text-base font-semibold mb-2">Scene Transformation</h3>
+                <p className="text-gray-600 text-xs">Transform backgrounds and environments while preserving subjects.</p>
+              </div>
+              <div className="bg-white rounded-lg p-4 shadow-sm">
+                <h3 className="text-base font-semibold mb-2">Style Matching</h3>
+                <p className="text-gray-600 text-xs">Apply artistic styles while maintaining character consistency.</p>
+              </div>
+              <div className="bg-white rounded-lg p-4 shadow-sm">
+                <h3 className="text-base font-semibold mb-2">Batch Processing</h3>
+                <p className="text-gray-600 text-xs">Process multiple images simultaneously with consistent results.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -215,14 +201,23 @@ const ImageEditor: React.FC = () => {
             '@type': 'WebApplication',
             'name': 'Nano-Banana AI Image Editor',
             'url': 'https://nano-banana.run/image-editor',
-            'description': 'Experience the power of Nano-Banana AI with enhanced text replacement, scene transformation, and accelerated processing.',
+            'description': 'Free AI-powered image editor with text replacement, scene transformation, and style matching. Create stunning images with natural language prompts.',
             'applicationCategory': 'DesignApplication',
             'operatingSystem': 'Web browser',
             'offers': {
               '@type': 'Offer',
               'price': '0',
               'priceCurrency': 'USD'
-            }
+            },
+            'featureList': [
+              'Text Replacement',
+              'Scene Transformation', 
+              'Style Matching',
+              'AI-Powered Generation',
+              'Real-time Preview',
+              'Batch Processing'
+            ],
+            'screenshot': 'https://nano-banana.run/images/image-editor-screenshot.jpg'
           })
         }}
       />

@@ -126,7 +126,7 @@ const WebVitalsDisplay: React.FC<WebVitalsDisplayProps> = ({
   };
 
   return (
-    <div className={`${className} p-4 rounded-lg bg-white shadow-sm border border-gray-200`}>
+    <div className={`${className} p-4 rounded-lg bg-white shadow-lg border border-gray-200 max-w-xs`}>
       <div className="flex justify-between items-center mb-3">
         <h3 className="text-lg font-medium text-gray-900">Core Web Vitals</h3>
         <button 

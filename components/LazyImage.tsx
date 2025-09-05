@@ -68,7 +68,7 @@ const LazyImage: React.FC<LazyImageProps> = ({
   const uniqueId = `lazy-image-${src.replace(/\W/g, '')}`;
 
   // 如果外部传入了 h-full，我们采用填充模式以适配卡片定高容器
-  const useFill = className?.includes('h-full');
+  const useFill = className?.includes('h-full') || className?.includes('object-cover');
 
   // 仅当不填充时使用内联尺寸样式，避免破坏父容器高度控制
   const wrapperStyle = useFill ? undefined : { width: '100%', height: 'auto', maxWidth: `${width}px` } as React.CSSProperties;

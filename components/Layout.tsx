@@ -5,6 +5,7 @@ import Footer from './Footer';
 import SEO from './SEO';
 import { generateWebPageSchema, generateBreadcrumbSchema } from '../lib/seo/StructuredDataGenerator';
 import WebVitalsDisplay from './WebVitalsDisplay';
+import PerformanceMonitor from './performance/PerformanceMonitor';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -112,8 +113,16 @@ const Layout: React.FC<LayoutProps> = ({
         {/* 性能监测组件 - 仅在开发环境或通过URL参数启用时显示 */}
         {showWebVitals && (
           <div className="fixed bottom-4 right-4 z-50 max-w-xs w-full">
-            <WebVitalsDisplay showDetails={process.env.NODE_ENV === 'development'} />
+            <WebVitalsDisplay 
+              showDetails={process.env.NODE_ENV === 'development'} 
+              className="fixed bottom-4 right-4 z-50 max-w-xs"
+            />
           </div>
+        )}
+        
+        {/* 性能监控组件 */}
+        {process.env.NODE_ENV === 'development' && (
+          <PerformanceMonitor showDetails={true} />
         )}
       </div>
     </>

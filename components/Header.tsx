@@ -28,12 +28,14 @@ const Header: React.FC = () => {
             </Link>
           </div>
           
-          {/* Desktop Navigation - 简化为4个核心导航 */}
-          <nav className="hidden md:ml-6 md:flex md:space-x-8">
-            <Link href="/image-editor" className="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-gray-500 hover:border-primary-600 hover:text-primary-700">Image Editor</Link>
-            <Link href="/showcase" className="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-gray-500 hover:border-primary-600 hover:text-primary-700">Showcase</Link>
-            <Link href="/tutorials" className="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-gray-500 hover:border-primary-600 hover:text-primary-700">Tutorials</Link>
-            <Link href="/comparison" className="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-gray-500 hover:border-primary-600 hover:text-primary-700">Features</Link>
+          {/* Desktop Navigation - 优化导航结构，整合新页面 */}
+          <nav className="hidden lg:ml-6 lg:flex lg:space-x-6">
+            <Link href="/" className="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-gray-500 hover:border-primary-600 hover:text-primary-700">Home</Link>
+            <Link href="/image-editor" className="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-gray-500 hover:border-primary-600 hover:text-primary-700">Try Free</Link>
+            <Link href="/tutorials" className="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-gray-500 hover:border-primary-600 hover:text-primary-700">How to Use</Link>
+            <Link href="/nano-banana-vs-flux-kontext" className="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-gray-500 hover:border-primary-600 hover:text-primary-700">vs Flux Kontext</Link>
+            <Link href="/showcase" className="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-gray-500 hover:border-primary-600 hover:text-primary-700">Examples</Link>
+            <Link href="/nano-banana-api" className="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium text-gray-500 hover:border-primary-600 hover:text-primary-700">API</Link>
           </nav>
           
           {/* CTA Button */}
@@ -46,12 +48,20 @@ const Header: React.FC = () => {
             </button>
             <Link href="/image-editor" className="inline-flex items-center px-4 py-2 bg-primary-600 text-white text-sm font-medium rounded-lg hover:bg-primary-700 transition-colors">
               <FiPlay className="w-4 h-4 mr-2" />
-              Launch Now
+              Try Free
+            </Link>
+          </div>
+          
+          {/* Mobile CTA Button */}
+          <div className="flex md:hidden items-center">
+            <Link href="/image-editor" className="inline-flex items-center px-3 py-2 bg-primary-600 text-white text-sm font-medium rounded-lg hover:bg-primary-700 transition-colors">
+              <FiPlay className="w-4 h-4 mr-1" />
+              Try
             </Link>
           </div>
           
           {/* Mobile menu button */}
-          <div className="flex md:hidden">
+          <div className="flex md:hidden ml-2">
             <button
               onClick={toggleMenu}
               className="inline-flex items-center justify-center p-2 rounded-md text-gray-500 hover:text-primary-600 focus:outline-none"
@@ -66,17 +76,19 @@ const Header: React.FC = () => {
         </div>
       </div>
       
-      {/* Mobile menu - 简化导航 */}
+      {/* Mobile menu - 优化移动端导航结构 */}
       {isMenuOpen && (
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1">
-            <Link href="/image-editor" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-primary-50 hover:text-primary-700">Image Editor</Link>
-            <Link href="/examples" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-primary-50 hover:text-primary-700">Showcase</Link>
-            <Link href="/tutorials" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-primary-50 hover:text-primary-700">Tutorials</Link>
-            <Link href="/comparison" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-primary-50 hover:text-primary-700">Features</Link>
+            <Link href="/" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-primary-50 hover:text-primary-700">Home</Link>
+            <Link href="/image-editor" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-primary-50 hover:text-primary-700">Try Free</Link>
+            <Link href="/tutorials" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-primary-50 hover:text-primary-700">How to Use</Link>
+            <Link href="/showcase" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-primary-50 hover:text-primary-700">Examples</Link>
+            <Link href="/nano-banana-vs-flux-kontext" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-primary-50 hover:text-primary-700">vs Flux Kontext</Link>
+            <Link href="/nano-banana-api" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-primary-50 hover:text-primary-700">API</Link>
             <div className="pt-4 border-t border-gray-200">
-              <Link href="/image-editor" className="block w-full text-center px-3 py-2 bg-primary-600 text-white text-base font-medium rounded-md hover:bg-primary-700">
-                Launch Now
+              <Link href="/image-editor" className="block w-full text-center px-3 py-3 bg-primary-600 text-white text-base font-bold rounded-lg hover:bg-primary-700 shadow-lg">
+                🚀 Try Nano Banana Free
               </Link>
             </div>
           </div>
